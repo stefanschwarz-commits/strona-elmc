@@ -1,0 +1,211 @@
+/*
+Theme Name: ELMC 2027
+Theme URI: https://elmc.eu
+Author: European Institute for Labour Mobility
+Description: Motyw European Labour Mobility Congress 2027 (dev.ekmp.pl).
+Version: 0.1.0
+Requires at least: 6.4
+Requires PHP: 8.0
+Text Domain: elmc2027
+*/
+
+:root {
+  --bg: #efece6;
+  --panel: #ffffff;
+  --ink: #191714;
+  --muted: #6f6a62;
+  --accent: #d9791e;
+  --rule: rgba(25, 23, 20, 0.10);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8rem 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-header .wordmark {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.site-header .wordmark span { color: var(--accent); }
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.6rem;
+}
+.site-nav a {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.site-nav a:hover { color: var(--accent); }
+
+/* ---------- Hero (front page) ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+  padding: 2rem 0 5rem;
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-bottom: 3rem; }
+}
+
+.hero-copy .eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+.hero-copy h1 {
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin-bottom: 1.3rem;
+}
+.hero-copy .lede {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 46ch;
+  margin-bottom: 2.1rem;
+}
+
+.signup-form {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 30rem;
+  margin-bottom: 0.9rem;
+}
+@media (max-width: 480px) { .signup-form { flex-direction: column; } }
+.signup-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.signup-form input[type="email"]::placeholder { color: var(--muted); }
+.signup-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(217, 121, 30, 0.18);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 1.6rem;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover { filter: brightness(0.94); }
+
+.form-note { font-size: 0.76rem; color: var(--muted); }
+
+.hero-art {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.hero-art img { display: block; width: 100%; }
+
+/* ---------- Status strip ---------- */
+
+.status-strip {
+  border-top: 1px solid var(--rule);
+  padding: 2.4rem 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+@media (max-width: 860px) {
+  .status-strip { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+.status-strip .item .label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.status-strip .item .value { font-size: 1.05rem; font-weight: 700; }
+.status-strip .item .value.accent { color: var(--accent); }
+
+/* ---------- Generic page content ---------- */
+
+.page-content {
+  padding: 3rem 0 4rem;
+  max-width: 70ch;
+}
+.page-content h1 {
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-weight: 900;
+  margin-bottom: 1.4rem;
+}
+.page-content p { line-height: 1.6; margin-bottom: 1.1rem; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0 2.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.76rem;
+  color: var(--muted);
+}
