@@ -27,3 +27,12 @@ jobs:
             **/.git*
             **/.git*/**
             **/README.md
+
+      # Files uploaded via the WebAs FTP subaccount default to permissions
+      # the web server user can't read (a hosting platform bug, reported to
+      # CyberFolks). Force-fix them after every deploy until that's resolved.
+      - name: Fix file permissions (WebAs FTP bug workaround)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -u "${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}" \
+            -e "chmod -R 755 wp-content/themes/elmc2027; bye"
