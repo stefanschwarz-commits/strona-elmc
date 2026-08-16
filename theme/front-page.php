@@ -52,6 +52,31 @@ get_header();
 			<div class="value"><?php esc_html_e( 'European Institute for Labour Mobility', 'elmc2027' ); ?></div>
 		</div>
 	</section>
+
+	<?php
+	$elmc2027_past_editions = array(
+		array( 'year' => '2025', 'title' => 'European Labour Mobility Congress 2025', 'url' => 'https://labourinstitute.eu/en/elmc2025/' ),
+		array( 'year' => '2023', 'title' => 'European Labour Mobility Congress 2023', 'url' => 'https://ekmp.pl/2023/' ),
+		array( 'year' => '2022', 'title' => 'European Labour Mobility Congress 2022', 'url' => 'https://ekmp.pl/2022/' ),
+		array( 'year' => '2019', 'title' => 'VI European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2019/' ),
+		array( 'year' => '2017', 'title' => 'V European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2017/' ),
+		array( 'year' => '2016', 'title' => 'European Labour Mobility Congress 2016', 'url' => 'https://ekmp.pl/2016/' ),
+		array( 'year' => '2015', 'title' => 'European Labour Mobility Congress 2015', 'url' => 'https://ekmp.pl/2015/' ),
+		array( 'year' => '2014', 'title' => 'II European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2014/' ),
+		array( 'year' => '2013', 'title' => 'Kraków Conference (I edition)', 'url' => 'https://ekmp.pl/2013/' ),
+	);
+	?>
+	<section class="archive" id="previous-editions">
+		<h2 class="archive-title"><?php esc_html_e( 'Previous editions', 'elmc2027' ); ?></h2>
+		<div class="archive-grid">
+			<?php foreach ( $elmc2027_past_editions as $edition ) : ?>
+				<a class="archive-card" href="<?php echo esc_url( $edition['url'] ); ?>" target="_blank" rel="noopener">
+					<span class="archive-year"><?php echo esc_html( $edition['year'] ); ?></span>
+					<span class="archive-name"><?php echo esc_html( $edition['title'] ); ?></span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</section>
 </div>
 
 <?php

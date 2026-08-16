@@ -16,6 +16,7 @@
 	<header class="site-header">
 		<a class="wordmark" href="<?php echo esc_url( home_url( '/' ) ); ?>">ELMC<span>.</span> — European Labour Mobility Congress</a>
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary', 'elmc2027' ); ?>">
+			<a href="<?php echo esc_url( home_url( '/#previous-editions' ) ); ?>"><?php esc_html_e( 'Previous editions', 'elmc2027' ); ?></a>
 			<?php
 			wp_nav_menu( array(
 				'theme_location' => 'primary',

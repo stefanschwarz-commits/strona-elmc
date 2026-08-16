@@ -183,6 +183,49 @@ a { color: inherit; }
 .status-strip .item .value { font-size: 1.05rem; font-weight: 700; }
 .status-strip .item .value.accent { color: var(--accent); }
 
+/* ---------- Previous editions archive ---------- */
+
+.archive {
+  border-top: 1px solid var(--rule);
+  padding: 3rem 0 4rem;
+}
+.archive-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+.archive-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--panel);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.15s ease;
+}
+.archive-card:hover { border-color: var(--accent); }
+.archive-year {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.archive-name {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
 /* ---------- Generic page content ---------- */
 
 .page-content {
