@@ -53,6 +53,27 @@ get_header();
 		</div>
 	</section>
 
+	<section class="about">
+		<div class="about-copy">
+			<h2 class="about-title"><?php esc_html_e( 'About ELMC', 'elmc2027' ); ?></h2>
+			<p><?php esc_html_e( 'The European Labour Mobility Congress is a recurring meeting point for labour mobility institutions, employment agencies and policymakers from across Europe — a place to compare practice, discuss regulation, and build cooperation across borders.', 'elmc2027' ); ?></p>
+		</div>
+		<div class="about-stats">
+			<div class="stat">
+				<div class="stat-value">2013</div>
+				<div class="stat-label"><?php esc_html_e( 'First edition', 'elmc2027' ); ?></div>
+			</div>
+			<div class="stat">
+				<div class="stat-value">9</div>
+				<div class="stat-label"><?php esc_html_e( 'Editions held', 'elmc2027' ); ?></div>
+			</div>
+			<div class="stat">
+				<div class="stat-value">2027</div>
+				<div class="stat-label"><?php esc_html_e( 'Next edition', 'elmc2027' ); ?></div>
+			</div>
+		</div>
+	</section>
+
 	<?php
 	$elmc2027_past_editions = array(
 		array( 'year' => '2025', 'title' => 'European Labour Mobility Congress 2025', 'url' => 'https://labourinstitute.eu/en/elmc2025/' ),
