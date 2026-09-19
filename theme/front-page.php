@@ -64,7 +64,7 @@ get_header();
 		</div>
 		<div class="item">
 			<div class="label"><?php esc_html_e( 'Organiser', 'elmc2027' ); ?></div>
-			<div class="value"><?php esc_html_e( 'European Institute for Labour Mobility', 'elmc2027' ); ?></div>
+			<div class="value"><?php esc_html_e( 'European Labour Mobility Institute', 'elmc2027' ); ?></div>
 		</div>
 	</section>
 
