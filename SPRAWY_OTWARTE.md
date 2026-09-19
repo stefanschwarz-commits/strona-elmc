@@ -47,6 +47,8 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   a stamtąd na labourinstitute.eu/ekmp2025. Pozostałe roczniki pod elmc.eu działają
   (2014, 2015, 2016, 2022 po angielsku; 2023 pokazuje wersję polską). Do decyzji przy
   przepinaniu domeny, czy te trzy reguły zostają.
+- **Decyzja Stefana 19.09.2026: elmc.eu jest domeną główną**, ekmp.pl przekierowuje na
+  polską wersję elmc.eu (obie domeny działają, archiwa pod starymi adresami zostają).
 - **Strona tymczasowa na elmc.eu** — gotowa na placu budowy: http://dev.ekmp.pl/zapowiedz/
   i http://dev.ekmp.pl/en/zapowiedz/ (19.09.2026). Czeka na akceptację wyglądu przez Stefana.
   Potem: przepięcie elmc.eu (osobna instalacja WP albo przeniesienie tej, reguły w
