@@ -111,10 +111,23 @@ a { color: inherit; }
 
 .signup-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
   max-width: 30rem;
   margin-bottom: 0.9rem;
 }
+.signup-consent {
+  flex-basis: 100%;
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.signup-consent input { margin-top: 0.15rem; accent-color: var(--accent); flex-shrink: 0; }
+.signup-consent a { color: var(--ink); }
+.signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 @media (max-width: 480px) { .signup-form { flex-direction: column; } }
 .signup-form input[type="email"] {
   flex: 1;

@@ -16,17 +16,32 @@ get_header();
 			<?php
 			$elmc2027_signup_status = isset( $_GET['elmc2027_signup'] ) ? sanitize_text_field( wp_unslash( $_GET['elmc2027_signup'] ) ) : '';
 			?>
+			<div id="signup"></div>
 			<?php if ( 'success' === $elmc2027_signup_status ) : ?>
-				<p class="form-note"><strong><?php esc_html_e( 'Thanks — we\'ll be in touch.', 'elmc2027' ); ?></strong></p>
+				<p class="form-note"><strong><?php esc_html_e( 'Confirmed — thank you. We\'ll let you know as soon as ELMC 2027 details are announced.', 'elmc2027' ); ?></strong></p>
+			<?php elseif ( 'check' === $elmc2027_signup_status ) : ?>
+				<p class="form-note"><strong><?php esc_html_e( 'Almost done — please check your inbox and click the confirmation link we\'ve just sent you.', 'elmc2027' ); ?></strong></p>
+			<?php elseif ( 'unsubscribed' === $elmc2027_signup_status ) : ?>
+				<p class="form-note"><strong><?php esc_html_e( 'You have been unsubscribed. You will not receive any more e-mails about ELMC 2027.', 'elmc2027' ); ?></strong></p>
 			<?php else : ?>
 				<form class="signup-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 					<input type="hidden" name="action" value="elmc2027_signup">
 					<?php wp_nonce_field( 'elmc2027_signup', 'elmc2027_signup_nonce' ); ?>
 					<input type="email" name="email" placeholder="you@organisation.eu" required>
 					<button class="btn" type="submit"><?php esc_html_e( 'Notify me', 'elmc2027' ); ?></button>
+					<input type="text" name="website" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+					<label class="signup-consent">
+						<input type="checkbox" name="consent" value="1" required>
+						<span><?php echo esc_html( elmc2027_consent_text() ); ?>
+							<a href="<?php echo esc_url( elmc2027_privacy_url() ); ?>"><?php esc_html_e( 'Privacy notice', 'elmc2027' ); ?></a></span>
+					</label>
 				</form>
 				<?php if ( 'error' === $elmc2027_signup_status ) : ?>
 					<div class="form-note"><?php esc_html_e( 'Please enter a valid email address.', 'elmc2027' ); ?></div>
+				<?php elseif ( 'consent' === $elmc2027_signup_status ) : ?>
+					<div class="form-note"><?php esc_html_e( 'Please tick the consent box so we can send you the updates.', 'elmc2027' ); ?></div>
+				<?php elseif ( 'invalid' === $elmc2027_signup_status ) : ?>
+					<div class="form-note"><?php esc_html_e( 'This link is no longer valid. You can sign up again below.', 'elmc2027' ); ?></div>
 				<?php else : ?>
 					<div class="form-note"><?php esc_html_e( 'One email when ELMC 2027 details are announced. No spam, unsubscribe anytime.', 'elmc2027' ); ?></div>
 				<?php endif; ?>
