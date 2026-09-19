@@ -1,119 +1,342 @@
 <?php
 /**
- * Front page: ELMC 2027 landing / email signup.
+ * ELMC 2027 homepage - built from the Claude Design handoff "ELMC 2027 Strona.dc.html".
+ *
+ * Section order and ground colours are locked by the design:
+ * orange -> white(facts) -> navy -> white -> grey -> white -> grey -> white -> grey
+ * -> orange -> black -> orange -> black -> white -> black.
+ *
+ * Image slots (4 recap photos, 8 speaker portraits, 7 partner logos) are dashed
+ * placeholders until real material arrives - no invented people, no stock photos.
  */
+
 get_header();
+
+$lang      = elmc2027_lang();
+$t         = elmc2027_copy( $lang );
+$home      = elmc2027_home_url( $lang );
+$assets    = get_template_directory_uri() . '/assets/img/';
+$signup    = isset( $_GET['elmc2027_signup'] ) ? sanitize_text_field( wp_unslash( $_GET['elmc2027_signup'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
+$cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $_GET['elmc2027_cfs'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
 ?>
 
-<div class="page">
+<main id="main">
+
 	<section class="hero">
 		<div class="hero-copy">
-			<span class="eyebrow"><?php esc_html_e( 'Next edition', 'elmc2027' ); ?></span>
-			<h1><?php esc_html_e( 'European Labour Mobility Congress 2027', 'elmc2027' ); ?></h1>
-			<p class="lede">
-				<?php esc_html_e( 'Since 2013, ELMC has brought together Europe\'s labour mobility institutions, employment agencies and policymakers. The 2027 edition is now in preparation — leave your email and we\'ll let you know as soon as dates and registration open.', 'elmc2027' ); ?>
-			</p>
-			<?php
-			$elmc2027_signup_status = isset( $_GET['elmc2027_signup'] ) ? sanitize_text_field( wp_unslash( $_GET['elmc2027_signup'] ) ) : '';
-			?>
-			<div id="signup"></div>
-			<?php if ( 'success' === $elmc2027_signup_status ) : ?>
-				<p class="form-note"><strong><?php esc_html_e( 'Confirmed — thank you. We\'ll let you know as soon as ELMC 2027 details are announced.', 'elmc2027' ); ?></strong></p>
-			<?php elseif ( 'check' === $elmc2027_signup_status ) : ?>
-				<p class="form-note"><strong><?php esc_html_e( 'Almost done — please check your inbox and click the confirmation link we\'ve just sent you.', 'elmc2027' ); ?></strong></p>
-			<?php elseif ( 'unsubscribed' === $elmc2027_signup_status ) : ?>
-				<p class="form-note"><strong><?php esc_html_e( 'You have been unsubscribed. You will not receive any more e-mails about ELMC 2027.', 'elmc2027' ); ?></strong></p>
-			<?php else : ?>
-				<form class="signup-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-					<input type="hidden" name="action" value="elmc2027_signup">
-					<?php wp_nonce_field( 'elmc2027_signup', 'elmc2027_signup_nonce' ); ?>
-					<input type="email" name="email" placeholder="you@organisation.eu" required>
-					<button class="btn" type="submit"><?php esc_html_e( 'Notify me', 'elmc2027' ); ?></button>
-					<input type="text" name="website" class="signup-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-					<label class="signup-consent">
-						<input type="checkbox" name="consent" value="1" required>
-						<span><?php echo esc_html( elmc2027_consent_text() ); ?>
-							<a href="<?php echo esc_url( elmc2027_privacy_url() ); ?>"><?php esc_html_e( 'Privacy notice', 'elmc2027' ); ?></a></span>
-					</label>
-				</form>
-				<?php if ( 'error' === $elmc2027_signup_status ) : ?>
-					<div class="form-note"><?php esc_html_e( 'Please enter a valid email address.', 'elmc2027' ); ?></div>
-				<?php elseif ( 'consent' === $elmc2027_signup_status ) : ?>
-					<div class="form-note"><?php esc_html_e( 'Please tick the consent box so we can send you the updates.', 'elmc2027' ); ?></div>
-				<?php elseif ( 'invalid' === $elmc2027_signup_status ) : ?>
-					<div class="form-note"><?php esc_html_e( 'This link is no longer valid. You can sign up again below.', 'elmc2027' ); ?></div>
+			<p class="kicker kicker--ink"><?php echo esc_html( $t['heroKicker'] ); ?></p>
+			<h1 class="hero-title"><?php echo esc_html( $t['heroTitle'] ); ?> <span class="hl-ink">2027</span></h1>
+			<p class="hero-lead"><?php echo esc_html( $t['heroLead'] ); ?></p>
+
+			<div class="signup" id="zapisz">
+				<?php if ( in_array( $signup, array( 'success', 'check', 'unsubscribed' ), true ) ) : ?>
+					<p class="notice">
+						<?php
+						if ( 'success' === $signup ) {
+							echo esc_html( $t['stSuccess'] );
+						} elseif ( 'check' === $signup ) {
+							echo esc_html( $t['stCheck'] );
+						} else {
+							echo esc_html( $t['stUnsub'] );
+						}
+						?>
+					</p>
 				<?php else : ?>
-					<div class="form-note"><?php esc_html_e( 'One email when ELMC 2027 details are announced. No spam, unsubscribe anytime.', 'elmc2027' ); ?></div>
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+						<input type="hidden" name="action" value="elmc2027_signup">
+						<input type="hidden" name="lang" value="<?php echo esc_attr( $lang ); ?>">
+						<?php wp_nonce_field( 'elmc2027_signup', 'elmc2027_signup_nonce' ); ?>
+						<div class="capsule">
+							<label class="sr-only" for="elmc-email"><?php echo esc_html( $t['emailPh'] ); ?></label>
+							<input type="email" id="elmc-email" name="email" placeholder="<?php echo esc_attr( $t['emailPh'] ); ?>" required>
+							<button type="submit"><?php echo esc_html( $t['notify'] ); ?></button>
+						</div>
+						<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+						<label class="consent">
+							<input type="checkbox" name="consent" value="1" required>
+							<span><?php echo esc_html( elmc2027_consent_text( $lang ) ); ?>
+								<a href="<?php echo esc_url( elmc2027_privacy_url() ); ?>"><?php echo esc_html( $t['privacyLink'] ); ?></a></span>
+						</label>
+					</form>
+					<p class="fine">
+						<?php
+						if ( 'error' === $signup ) {
+							echo esc_html( $t['stError'] );
+						} elseif ( 'consent' === $signup ) {
+							echo esc_html( $t['stConsent'] );
+						} elseif ( 'invalid' === $signup ) {
+							echo esc_html( $t['stInvalid'] );
+						} else {
+							echo esc_html( $t['noSpam'] );
+						}
+						?>
+					</p>
 				<?php endif; ?>
-			<?php endif; ?>
+			</div>
 		</div>
 		<div class="hero-art">
-			<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/elmc-hero.jpg' ); ?>"
-				alt="<?php esc_attr_e( 'European Labour (crossed out, replaced with Service) Mobility Congress — Barriers down! Europe forward!', 'elmc2027' ); ?>">
+			<img src="<?php echo esc_url( $assets . 'kv-elmc.jpg' ); ?>" alt="<?php echo esc_attr( $t['heroAlt'] ); ?>" width="1800" height="1354">
 		</div>
 	</section>
 
-	<section class="status-strip">
-		<div class="item">
-			<div class="label"><?php esc_html_e( 'Edition', 'elmc2027' ); ?></div>
-			<div class="value accent">ELMC 2027</div>
-		</div>
-		<div class="item">
-			<div class="label"><?php esc_html_e( 'Dates & venue', 'elmc2027' ); ?></div>
-			<div class="value"><?php esc_html_e( 'To be announced', 'elmc2027' ); ?></div>
-		</div>
-		<div class="item">
-			<div class="label"><?php esc_html_e( 'Organiser', 'elmc2027' ); ?></div>
-			<div class="value"><?php esc_html_e( 'European Labour Mobility Institute', 'elmc2027' ); ?></div>
+	<div class="facts">
+		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fEdition'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['fEditionV'] ); ?></span></div>
+		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fDates'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['tba'] ); ?></span></div>
+		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fPlace'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['tba'] ); ?></span></div>
+		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fOrg'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['elmi'] ); ?></span></div>
+	</div>
+
+	<section class="band">
+		<div class="wrap">
+			<p class="slogan" lang="en">Barriers down!<br><span>Europe forward!</span></p>
+			<p class="band-body"><?php echo esc_html( $t['bandBody'] ); ?></p>
 		</div>
 	</section>
 
-	<section class="about">
-		<div class="about-copy">
-			<h2 class="about-title"><?php esc_html_e( 'About ELMC', 'elmc2027' ); ?></h2>
-			<p><?php esc_html_e( 'The European Labour Mobility Congress is a recurring meeting point for labour mobility institutions, employment agencies and policymakers from across Europe — a place to compare practice, discuss regulation, and build cooperation across borders.', 'elmc2027' ); ?></p>
+	<section class="section bg-white" id="misja">
+		<div class="wrap stack">
+			<h2 class="kicker"><?php echo esc_html( $t['missionKicker'] ); ?></h2>
+			<div class="split split-7-5">
+				<p class="lead"><?php echo esc_html( $t['missionLead'] ); ?></p>
+				<p class="body"><?php echo esc_html( $t['missionBody'] ); ?></p>
+			</div>
+			<ol class="pillars">
+				<?php foreach ( $t['pillars'] as $i => $pillar ) : ?>
+					<li class="pillar">
+						<span class="num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
+						<span class="pillar-title"><?php echo esc_html( $pillar['title'] ); ?></span>
+						<span class="pillar-desc"><?php echo esc_html( $pillar['desc'] ); ?></span>
+					</li>
+				<?php endforeach; ?>
+			</ol>
 		</div>
-		<div class="about-stats">
-			<div class="stat">
-				<div class="stat-value">2013</div>
-				<div class="stat-label"><?php esc_html_e( 'First edition', 'elmc2027' ); ?></div>
+	</section>
+
+	<section class="section bg-grey" id="temat">
+		<div class="wrap split split-1-1 split-center">
+			<div>
+				<p class="kicker kicker--plain"><?php echo esc_html( $t['themeKicker'] ); ?></p>
+				<p class="theme-word" lang="en">
+					<span>European</span>
+					<span class="swap"><s class="strike">Labour</s><span class="swap-new">Service</span></span>
+					<span>Mobility</span>
+					<span>Congress</span>
+				</p>
 			</div>
-			<div class="stat">
-				<div class="stat-value">9</div>
-				<div class="stat-label"><?php esc_html_e( 'Editions held', 'elmc2027' ); ?></div>
-			</div>
-			<div class="stat">
-				<div class="stat-value">2027</div>
-				<div class="stat-label"><?php esc_html_e( 'Next edition', 'elmc2027' ); ?></div>
+			<div>
+				<p class="theme-slogan"><?php echo esc_html( $t['themeSlogan'] ); ?></p>
+				<p class="body theme-body"><?php echo esc_html( $t['themeBody'] ); ?></p>
 			</div>
 		</div>
 	</section>
 
-	<?php
-	$elmc2027_past_editions = array(
-		array( 'year' => '2025', 'title' => 'European Labour Mobility Congress 2025', 'url' => 'https://labourinstitute.eu/en/elmc2025/' ),
-		array( 'year' => '2023', 'title' => 'European Labour Mobility Congress 2023', 'url' => 'https://ekmp.pl/2023/' ),
-		array( 'year' => '2022', 'title' => 'European Labour Mobility Congress 2022', 'url' => 'https://ekmp.pl/2022/' ),
-		array( 'year' => '2019', 'title' => 'VI European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2019/' ),
-		array( 'year' => '2017', 'title' => 'V European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2017/' ),
-		array( 'year' => '2016', 'title' => 'European Labour Mobility Congress 2016', 'url' => 'https://ekmp.pl/2016/' ),
-		array( 'year' => '2015', 'title' => 'European Labour Mobility Congress 2015', 'url' => 'https://ekmp.pl/2015/' ),
-		array( 'year' => '2014', 'title' => 'II European Labour Mobility Congress', 'url' => 'https://ekmp.pl/2014/' ),
-		array( 'year' => '2013', 'title' => 'Kraków Conference (I edition)', 'url' => 'https://ekmp.pl/2013/' ),
-	);
-	?>
-	<section class="archive" id="previous-editions">
-		<h2 class="archive-title"><?php esc_html_e( 'Previous editions', 'elmc2027' ); ?></h2>
-		<div class="archive-grid">
-			<?php foreach ( $elmc2027_past_editions as $edition ) : ?>
-				<a class="archive-card" href="<?php echo esc_url( $edition['url'] ); ?>" target="_blank" rel="noopener">
-					<span class="archive-year"><?php echo esc_html( $edition['year'] ); ?></span>
-					<span class="archive-name"><?php echo esc_html( $edition['title'] ); ?></span>
+	<section class="section bg-white rule-top" id="o-kongresie">
+		<div class="wrap split split-1-1">
+			<h2 class="h2"><?php echo esc_html( $t['aboutH1'] ); ?> <span class="hl-orange"><?php echo esc_html( $t['aboutH2'] ); ?></span> <?php echo esc_html( $t['aboutH3'] ); ?></h2>
+			<div>
+				<p class="body"><?php echo esc_html( $t['aboutBody'] ); ?></p>
+				<div class="stats">
+					<div class="stat"><span class="stat-n">2013</span><span class="stat-l"><?php echo esc_html( $t['s1'] ); ?></span></div>
+					<div class="stat"><span class="stat-n">9</span><span class="stat-l"><?php echo esc_html( $t['s2'] ); ?></span></div>
+					<div class="stat"><span class="stat-n">17</span><span class="stat-l"><?php echo esc_html( $t['s3'] ); ?></span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-grey" id="dla-kogo">
+		<div class="wrap split split-4-8">
+			<div class="sticky">
+				<h2 class="h2"><?php echo esc_html( $t['whoH'] ); ?></h2>
+				<p class="who-lead"><?php echo esc_html( $t['whoLead'] ); ?></p>
+			</div>
+			<ol class="rows">
+				<?php foreach ( $t['who'] as $i => $who ) : ?>
+					<li class="row">
+						<span class="num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
+						<span class="row-title"><?php echo esc_html( $who['title'] ); ?></span>
+						<span class="row-desc"><?php echo esc_html( $who['desc'] ); ?></span>
+					</li>
+				<?php endforeach; ?>
+			</ol>
+		</div>
+	</section>
+
+	<section class="section bg-white" id="relacja">
+		<div class="wrap">
+			<div class="head-row">
+				<h2 class="h2"><?php echo esc_html( $t['recapH'] ); ?></h2>
+				<a class="mono-link" href="https://labourinstitute.eu/ekmp2026/"><?php echo esc_html( $t['recapLink'] ); ?> →</a>
+			</div>
+			<div class="recap-grid">
+				<div class="recap-main"><span class="slot"><?php echo esc_html( $t['recapSlots'][0] ); ?></span></div>
+				<span class="slot"><?php echo esc_html( $t['recapSlots'][1] ); ?></span>
+				<span class="slot"><?php echo esc_html( $t['recapSlots'][2] ); ?></span>
+				<span class="slot"><?php echo esc_html( $t['recapSlots'][3] ); ?></span>
+				<div class="recap-stat"><span class="recap-stat-n">17</span><span class="recap-stat-l"><?php echo esc_html( $t['recapStat'] ); ?></span></div>
+			</div>
+			<p class="recap-body"><?php echo esc_html( $t['recapBody'] ); ?></p>
+		</div>
+	</section>
+
+	<section class="section bg-grey" id="prelegenci">
+		<div class="wrap">
+			<div class="head-row head-row--tight">
+				<h2 class="h2"><?php echo esc_html( $t['speakersH'] ); ?></h2>
+				<span class="note"><?php echo esc_html( $t['speakersNote'] ); ?></span>
+			</div>
+			<p class="speakers-body"><?php echo esc_html( $t['speakersBody'] ); ?></p>
+			<ul class="speaker-grid">
+				<?php foreach ( elmc2027_speaker_years() as $year ) : ?>
+					<li class="speaker">
+						<span class="slot slot--square"><?php echo esc_html( $t['speakerPhoto'] ); ?></span>
+						<span>
+							<span class="sp-name"><?php echo esc_html( $t['spName'] ); ?></span>
+							<span class="sp-role"><?php echo esc_html( $t['spRole'] ); ?></span>
+							<span class="sp-year">ELMC <?php echo esc_html( (string) $year ); ?></span>
+						</span>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section bg-orange" id="cfs">
+		<div class="wrap split split-1-1">
+			<div>
+				<p class="kicker kicker--ink">Call for Speakers</p>
+				<h2 class="h2 cfs-h"><?php echo esc_html( $t['cfsH'] ); ?></h2>
+				<p class="cfs-body"><?php echo esc_html( $t['cfsBody'] ); ?></p>
+				<ul class="dash-list">
+					<?php foreach ( $t['cfsList'] as $item ) : ?>
+						<li><?php echo esc_html( $item ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+
+			<?php if ( 'success' === $cfs_state ) : ?>
+				<div class="card card--thanks">
+					<p class="thanks-h"><?php echo esc_html( $t['cfsThanksH'] ); ?></p>
+					<p class="thanks-b"><?php echo esc_html( $t['cfsThanksB'] ); ?></p>
+				</div>
+			<?php else : ?>
+				<form class="card" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+					<input type="hidden" name="action" value="elmc2027_cfs">
+					<input type="hidden" name="lang" value="<?php echo esc_attr( $lang ); ?>">
+					<?php wp_nonce_field( 'elmc2027_cfs', 'elmc2027_cfs_nonce' ); ?>
+					<label class="field">
+						<span class="field-label"><?php echo esc_html( $t['fName'] ); ?></span>
+						<input type="text" name="cfs_name" required>
+					</label>
+					<label class="field">
+						<span class="field-label"><?php echo esc_html( $t['fOrgPos'] ); ?></span>
+						<input type="text" name="cfs_org" required>
+					</label>
+					<label class="field">
+						<span class="field-label">E-mail</span>
+						<input type="email" name="cfs_email" required>
+					</label>
+					<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+					<label class="check">
+						<input type="checkbox" name="cfs_rodo" value="1" required>
+						<span><?php echo esc_html( elmc2027_cfs_consent_text( $lang ) ); ?></span>
+					</label>
+					<button class="btn-block" type="submit"><?php echo esc_html( $t['cfsSubmit'] ); ?></button>
+					<?php if ( in_array( $cfs_state, array( 'fields', 'email', 'consent' ), true ) ) : ?>
+						<p class="form-error">
+							<?php
+							if ( 'fields' === $cfs_state ) {
+								echo esc_html( $t['cfsErrFields'] );
+							} elseif ( 'email' === $cfs_state ) {
+								echo esc_html( $t['cfsErrEmail'] );
+							} else {
+								echo esc_html( $t['cfsErrRodo'] );
+							}
+							?>
+						</p>
+					<?php else : ?>
+						<p class="req"><?php echo esc_html( $t['required'] ); ?></p>
+					<?php endif; ?>
+				</form>
+			<?php endif; ?>
+		</div>
+	</section>
+
+	<section class="section bg-black" id="partnerstwo">
+		<div class="wrap split split-5-7 split-wide-gap">
+			<div class="sticky stack-22">
+				<p class="kicker kicker--orange"><?php echo esc_html( $t['partKicker'] ); ?></p>
+				<h2 class="h2-xl"><?php echo esc_html( $t['partH'] ); ?></h2>
+				<p class="on-dark"><?php echo esc_html( $t['partBody'] ); ?></p>
+				<div class="part-cta">
+					<a class="btn btn--orange" href="mailto:<?php echo esc_attr( ELMC2027_CONTACT_EMAIL ); ?>"><?php echo esc_html( $t['partCta'] ); ?></a>
+					<span class="part-note"><?php echo esc_html( $t['partNote'] ); ?> · <?php echo esc_html( ELMC2027_CONTACT_EMAIL ); ?></span>
+				</div>
+			</div>
+			<ol class="tiers">
+				<?php
+				$marks = elmc2027_tier_marks();
+				foreach ( $t['tiers'] as $i => $tier ) :
+					$mark = $marks[ $i ];
+					?>
+					<li class="tier" style="--mark:<?php echo esc_attr( $mark['dot'] ); ?>;--mark-color:<?php echo esc_attr( $mark['color'] ); ?>;--mark-radius:<?php echo esc_attr( $mark['radius'] ); ?>;--tier-size:<?php echo esc_attr( $mark['size'] ); ?>">
+						<span class="tier-mark" aria-hidden="true"></span>
+						<span class="tier-head">
+							<span class="tier-name"><?php echo esc_html( $tier['name'] ); ?></span>
+							<span class="tier-tag"><?php echo esc_html( $tier['tag'] ); ?></span>
+						</span>
+						<span class="tier-desc"><?php echo esc_html( $tier['desc'] ); ?></span>
+					</li>
+				<?php endforeach; ?>
+			</ol>
+		</div>
+	</section>
+
+	<section class="section bg-orange" id="organizator">
+		<div class="wrap split split-5-7">
+			<div class="stack-28">
+				<p class="kicker kicker--ink"><?php echo esc_html( $t['orgLabel'] ); ?></p>
+				<img class="org-logo" src="<?php echo esc_url( $assets . 'logo-elmi.jpg' ); ?>" alt="<?php echo esc_attr( $t['elmi'] ); ?>" width="301" height="295">
+				<a class="mono-link mono-link--ink" href="https://labourinstitute.eu">labourinstitute.eu →</a>
+			</div>
+			<div class="stack-24">
+				<h2 class="h2-xl h2-xl--ink"><?php echo esc_html( $t['orgH'] ); ?></h2>
+				<p class="org-body"><?php echo esc_html( $t['orgBody'] ); ?></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section bg-black" id="partnerzy">
+		<div class="wrap">
+			<div class="head-row head-row--partners">
+				<h2 class="h2 on-dark-h"><?php echo esc_html( $t['partnersH'] ); ?></h2>
+				<span class="note note--dark"><?php echo esc_html( $t['partnersNote'] ); ?></span>
+			</div>
+			<div class="logo-grid">
+				<a class="logo-card" href="https://polishcare.eu">
+					<img src="<?php echo esc_url( $assets . 'logo-psod.jpg' ); ?>" alt="<?php echo esc_attr( $t['psod'] ); ?>" width="1599" height="648">
 				</a>
-			<?php endforeach; ?>
+				<?php for ( $i = 0; $i < 7; $i++ ) : ?>
+					<span class="logo-card logo-card--empty"><span class="slot slot--logo"><?php echo esc_html( $t['logoPh'] ); ?></span></span>
+				<?php endfor; ?>
+			</div>
 		</div>
 	</section>
-</div>
+
+	<section class="editions" id="edycje">
+		<span class="editions-label"><?php echo esc_html( $t['editionsH'] ); ?></span>
+		<ul class="pills">
+			<?php foreach ( elmc2027_editions( $lang ) as $edition ) : ?>
+				<li>
+					<a class="pill" href="<?php echo esc_url( $edition['href'] ); ?>" title="<?php echo esc_attr( $edition['label'] ); ?>">
+						<span class="pill-roman"><?php echo esc_html( $edition['roman'] ); ?></span><?php echo esc_html( $edition['year'] ); ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+
+</main>
 
 <?php
 get_footer();
