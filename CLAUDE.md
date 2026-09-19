@@ -37,13 +37,13 @@ bo ta subdomena już wskazuje na hosting CyberFolks).
   w pliku: "dsierzy - 20241106 - przekieruj ruch..."), NIE reguła Cloudflare Page/Redirect Rule
   (tych nie ma). Reguły jawnie WYKLUCZAJĄ ścieżki z prefiksem roku (2013/2014/.../2023) z
   przekierowania.
-- **NIEROZWIĄZANA ZAGADKA (flagowana, nie wyjaśniona):** mimo tego wykluczenia, `elmc.eu/2019/`
-  nadal 301-przekierowuje na `www.ekmp.pl` zamiast pokazać prawdziwe archiwum 2019 — sprawdzone
-  dwa razy, także po ręcznym wyczyszczeniu cache Cloudflare dla ścieżek `elmc.eu/2013`...`2023`.
-  Podejrzenie: wtyczka **"Redirection"** zainstalowana w osieroconej instalacji WP pod
-  `public_html/elmc.eu/` ma własne reguły w bazie, niezależne od `.htaccess`; ewentualnie
-  kolejność reguł Apache. **Do zbadania przed poleganiem na `.htaccess` jako jedynym źródle
-  prawdy o przekierowaniach.**
+- **Zagadka `elmc.eu/2019/` — wyjaśniona 19.09.2026:** roczniki 2013, 2017 i 2019 mają we
+  własnym `.htaccess` regułę „Przekierowanie zamówione przez Dominika" (host elmc.eu →
+  `www.ekmp.pl/`). To nie wtyczka Redirection. Katalog dokumentów obu domen to
+  `public_html/ekmp.pl` (roczniki w podkatalogach, 2014–2016 w wersjach `…pl`/`…en`).
+- **Archiwa to cel nr 1 projektu** — po incydencie z 19.09.2026 (inny wątek zamknął roczniki,
+  potem je przywrócił, patrz `SPRAWY_OTWARTE.md`) każda sesja porządkująca serwer ma je
+  zostawić otwarte.
 - Dla porównania: `https://ekmp.pl/2019/` (bez `elmc.` ) działa poprawnie i pokazuje prawdziwe
   archiwum "VI European Labour Mobility Congress (EKMP) 2019".
 
@@ -156,6 +156,10 @@ Kod: `theme/` (motyw WordPressa, katalog na serwerze: `wp-content/themes/elmc202
 - `inc/cfs.php` — Call for Speakers: tabela, walidacja, mail na `ELMC2027_CONTACT_EMAIL`.
 - `inc/admin.php` — podgląd zapisów i zgłoszeń w panelu WP (menu „ELMC 2027").
 - `header.php` / `footer.php` / `front-page.php` / `page.php` / `index.php` — szablony.
+- `teaser.php` — strona tymczasowa (zapowiedź) na elmc.eu przed startem pełnej strony:
+  `/zapowiedz/` i `/en/zapowiedz/`; `ELMC2027_TEASER_FRONT = true` robi z niej stronę główną.
+- `parts/` — sekcje wspólne dla pełnej strony i zapowiedzi (hero z zapisem, fakty, hasło,
+  o kongresie, poprzednie edycje). Zmiana tu zmienia obie strony.
 - `assets/img/` — `kv-elmc.jpg` (mural), `logo-elmc.png`, `logo-elmi.jpg`, `logo-psod.jpg`.
 
 **System wizualny** (z pakietu Claude Design, 19.09.2026): pomarańcz `#E9961F` / `#F3B33D`,

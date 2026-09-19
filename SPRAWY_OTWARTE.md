@@ -41,6 +41,25 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   zaprojektować.
 - **Przekierowanie elmc.eu** — strona docelowo ma stać pod elmc.eu (dziś przekierowanie na
   labourinstitute.eu przez `.htaccess`). Osobny krok, wymaga DNS/Cloudflare i decyzji o dacie.
-- **Zagadka `elmc.eu/2019/`** — mimo wykluczenia w `.htaccess` adres nadal przekierowuje.
-  Do zbadania przed przepięciem domeny (podejrzenie: wtyczka Redirection w osieroconej
-  instalacji WP pod `public_html/elmc.eu/`).
+- ~~**Zagadka `elmc.eu/2019/`**~~ — wyjaśniona 19.09.2026: to nie wtyczka, tylko reguła
+  „Przekierowanie zamówione przez Dominika" w `.htaccess` roczników **2013, 2017 i 2019**
+  (`public_html/ekmp.pl/<rok>/.htaccess`): adres z domeną elmc.eu idzie na `www.ekmp.pl/`,
+  a stamtąd na labourinstitute.eu/ekmp2025. Pozostałe roczniki pod elmc.eu działają
+  (2014, 2015, 2016, 2022 po angielsku; 2023 pokazuje wersję polską). Do decyzji przy
+  przepinaniu domeny, czy te trzy reguły zostają.
+- **Strona tymczasowa na elmc.eu** — gotowa na placu budowy: http://dev.ekmp.pl/zapowiedz/
+  i http://dev.ekmp.pl/en/zapowiedz/ (19.09.2026). Czeka na akceptację wyglądu przez Stefana.
+  Potem: przepięcie elmc.eu (osobna instalacja WP albo przeniesienie tej, reguły w
+  `public_html/ekmp.pl/.htaccess` od Dawida, Cloudflare). Na docelowym serwerze wystarczy
+  `define( 'ELMC2027_TEASER_FRONT', true );`, żeby zapowiedź była stroną główną.
+- **Przekierowania elmc.eu i ekmp.pl wskazują edycję 2025** (labourinstitute.eu/…2025),
+  choć jest już strona 2026 — nieaktualne niezależnie od ELMC 2027.
+
+## Archiwa kongresów — incydent 19.09.2026
+
+Wątek „uporządkuj i zaktualizuj domeny na koncie WebAs" o 20:35 zamknął (403) wszystkie
+roczniki `ekmp.pl/2013`–`2023` z dopiskiem „decyzja Stefana". Stefan: to nie była jego
+decyzja — kazał zamknąć tylko strony-śmietnik. Tamten wątek sam przywrócił pliki
+(stan sprzed zmiany); sprawdzone o 21:14: **8 z 8 roczników ekmp.pl odpowiada 200**
+z właściwymi tytułami. `arch.inicjatywa.eu` i `old.inicjatywa.eu` pozostają zamknięte
+(to nie są archiwa kongresów).
