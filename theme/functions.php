@@ -50,6 +50,18 @@ add_action( 'wp_head', function () {
 }, 0 );
 
 /**
+ * The building site must not show up in Google - otherwise dev.ekmp.pl would compete with
+ * elmc.eu for the same text once the real address goes live. Applies only to this host.
+ */
+add_filter( 'wp_robots', function ( $robots ) {
+	if ( false !== strpos( strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) ), 'dev.ekmp.pl' ) ) {
+		$robots['noindex']  = true;
+		$robots['nofollow'] = true;
+	}
+	return $robots;
+} );
+
+/**
  * "Notify me" signup with explicit consent and double opt-in (19.09.2026).
  *
  * - The consent checkbox is required; its exact text and a stable version id are stored with each signup.
