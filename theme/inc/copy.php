@@ -303,9 +303,9 @@ function elmc2027_editions( $lang = null ) {
 	);
 	$years  = array( '2026', '2025', '2023', '2022', '2019', '2017', '2016', '2015', '2014', '2013' );
 	$romans = array( 'IX', 'VIII', 'VII', '—', 'VI', 'V', 'IV', 'III', 'II', 'I' );
-	$hrefs  = array(
+	$hrefs_pl = array(
 		'https://labourinstitute.eu/ekmp2026/',
-		'https://labourinstitute.eu/en/elmc2025/',
+		'https://labourinstitute.eu/ekmp2025/',
 		'https://ekmp.pl/2023/',
 		'https://ekmp.pl/2022/',
 		'https://ekmp.pl/2019/',
@@ -315,7 +315,22 @@ function elmc2027_editions( $lang = null ) {
 		'https://ekmp.pl/2014/',
 		'https://ekmp.pl/2013/',
 	);
+	// English archives exist under elmc.eu for 2014, 2015, 2016 and 2022 only (checked 19.09.2026);
+	// 2013, 2017, 2019 and 2023 have Polish versions only.
+	$hrefs_en = array(
+		'https://labourinstitute.eu/en/elmc2026/',
+		'https://labourinstitute.eu/en/elmc2025/',
+		'https://ekmp.pl/2023/',
+		'https://www.elmc.eu/2022/',
+		'https://ekmp.pl/2019/',
+		'https://ekmp.pl/2017/',
+		'https://www.elmc.eu/2016/',
+		'https://www.elmc.eu/2015/',
+		'https://www.elmc.eu/2014/',
+		'https://ekmp.pl/2013/',
+	);
 
+	$hrefs    = 'en' === $lang ? $hrefs_en : $hrefs_pl;
 	$labels   = 'en' === $lang ? $labels_en : $labels_pl;
 	$editions = array();
 	foreach ( $years as $i => $year ) {

@@ -89,7 +89,7 @@ $cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $
 		<div class="wrap">
 			<div class="head-row">
 				<h2 class="h2"><?php echo esc_html( $t['recapH'] ); ?></h2>
-				<a class="mono-link" href="https://labourinstitute.eu/ekmp2026/"><?php echo esc_html( $t['recapLink'] ); ?> →</a>
+				<a class="mono-link" href="<?php echo esc_url( 'en' === $lang ? 'https://labourinstitute.eu/en/elmc2026/' : 'https://labourinstitute.eu/ekmp2026/' ); ?>"><?php echo esc_html( $t['recapLink'] ); ?> →</a>
 			</div>
 			<div class="recap-grid">
 				<div class="recap-main"><span class="slot"><?php echo esc_html( $t['recapSlots'][0] ); ?></span></div>
