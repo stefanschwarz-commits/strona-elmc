@@ -61,5 +61,6 @@ Wątek „uporządkuj i zaktualizuj domeny na koncie WebAs" o 20:35 zamknął (4
 roczniki `ekmp.pl/2013`–`2023` z dopiskiem „decyzja Stefana". Stefan: to nie była jego
 decyzja — kazał zamknąć tylko strony-śmietnik. Tamten wątek sam przywrócił pliki
 (stan sprzed zmiany); sprawdzone o 21:14: **8 z 8 roczników ekmp.pl odpowiada 200**
-z właściwymi tytułami. `arch.inicjatywa.eu` i `old.inicjatywa.eu` pozostają zamknięte
-(to nie są archiwa kongresów).
+z właściwymi tytułami. `arch.inicjatywa.eu` i `old.inicjatywa.eu` (stare strony
+Inicjatywy Mobilności Pracy — dawna nazwa stowarzyszenia) **zostają zamknięte — decyzja
+Stefana 19.09.2026**; pliki i bazy zostają na serwerze.
