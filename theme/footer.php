@@ -13,14 +13,16 @@ $elmc_home = elmc2027_home_url( $elmc_lang );
 		<p>European Labour Mobility Congress<br><?php echo esc_html( $elmc_t['orgLabel'] ); ?>: <?php echo esc_html( $elmc_t['elmi'] ); ?></p>
 	</div>
 	<div class="footer-cols">
+		<?php if ( ! elmc2027_is_teaser() ) : ?>
 		<div>
 			<a href="<?php echo esc_url( $elmc_home . '#o-kongresie' ); ?>"><?php echo esc_html( $elmc_t['navAbout'] ); ?></a>
 			<a href="<?php echo esc_url( $elmc_home . '#relacja' ); ?>"><?php echo esc_html( $elmc_t['navRecap'] ); ?></a>
 			<a href="<?php echo esc_url( $elmc_home . '#cfs' ); ?>">Call for Speakers</a>
 			<a href="<?php echo esc_url( $elmc_home . '#partnerstwo' ); ?>"><?php echo esc_html( $elmc_t['navPartners'] ); ?></a>
 		</div>
+		<?php endif; ?>
 		<div>
-			<a href="<?php echo esc_url( $elmc_home . '#edycje' ); ?>"><?php echo esc_html( $elmc_t['editionsH'] ); ?></a>
+			<a href="<?php echo esc_url( elmc2027_page_url( $elmc_lang ) . '#edycje' ); ?>"><?php echo esc_html( $elmc_t['editionsH'] ); ?></a>
 			<a class="accent" href="https://labourinstitute.eu">labourinstitute.eu</a>
 			<a class="accent" href="mailto:<?php echo esc_attr( ELMC2027_CONTACT_EMAIL ); ?>"><?php echo esc_html( ELMC2027_CONTACT_EMAIL ); ?></a>
 			<a href="<?php echo esc_url( elmc2027_privacy_url() ); ?>"><?php echo esc_html( $elmc_t['privacyLink'] ); ?></a>

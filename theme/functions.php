@@ -134,7 +134,7 @@ function elmc2027_privacy_url() {
 
 function elmc2027_redirect( $status, $lang = null ) {
 	$lang = ( 'en' === $lang || 'pl' === $lang ) ? $lang : elmc2027_lang();
-	wp_safe_redirect( add_query_arg( 'elmc2027_signup', $status, elmc2027_home_url( $lang ) ) . '#zapisz' );
+	wp_safe_redirect( add_query_arg( 'elmc2027_signup', $status, elmc2027_page_url( $lang ) ) . '#zapisz' );
 	exit;
 }
 

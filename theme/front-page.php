@@ -22,76 +22,11 @@ $cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $
 
 <main id="main">
 
-	<section class="hero">
-		<div class="hero-copy">
-			<p class="kicker kicker--ink"><?php echo esc_html( $t['heroKicker'] ); ?></p>
-			<h1 class="hero-title"><?php echo esc_html( $t['heroTitle'] ); ?> <span class="hl-ink">2027</span></h1>
-			<p class="hero-lead"><?php echo esc_html( $t['heroLead'] ); ?></p>
+	<?php include locate_template( 'parts/hero.php' ); ?>
 
-			<div class="signup" id="zapisz">
-				<?php if ( in_array( $signup, array( 'success', 'check', 'unsubscribed' ), true ) ) : ?>
-					<p class="notice">
-						<?php
-						if ( 'success' === $signup ) {
-							echo esc_html( $t['stSuccess'] );
-						} elseif ( 'check' === $signup ) {
-							echo esc_html( $t['stCheck'] );
-						} else {
-							echo esc_html( $t['stUnsub'] );
-						}
-						?>
-					</p>
-				<?php else : ?>
-					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-						<input type="hidden" name="action" value="elmc2027_signup">
-						<input type="hidden" name="lang" value="<?php echo esc_attr( $lang ); ?>">
-						<?php wp_nonce_field( 'elmc2027_signup', 'elmc2027_signup_nonce' ); ?>
-						<div class="capsule">
-							<label class="sr-only" for="elmc-email"><?php echo esc_html( $t['emailPh'] ); ?></label>
-							<input type="email" id="elmc-email" name="email" placeholder="<?php echo esc_attr( $t['emailPh'] ); ?>" required>
-							<button type="submit"><?php echo esc_html( $t['notify'] ); ?></button>
-						</div>
-						<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-						<label class="consent">
-							<input type="checkbox" name="consent" value="1" required>
-							<span><?php echo esc_html( elmc2027_consent_text( $lang ) ); ?>
-								<a href="<?php echo esc_url( elmc2027_privacy_url() ); ?>"><?php echo esc_html( $t['privacyLink'] ); ?></a></span>
-						</label>
-					</form>
-					<p class="fine">
-						<?php
-						if ( 'error' === $signup ) {
-							echo esc_html( $t['stError'] );
-						} elseif ( 'consent' === $signup ) {
-							echo esc_html( $t['stConsent'] );
-						} elseif ( 'invalid' === $signup ) {
-							echo esc_html( $t['stInvalid'] );
-						} else {
-							echo esc_html( $t['noSpam'] );
-						}
-						?>
-					</p>
-				<?php endif; ?>
-			</div>
-		</div>
-		<div class="hero-art">
-			<img src="<?php echo esc_url( $assets . 'kv-elmc.jpg' ); ?>" alt="<?php echo esc_attr( $t['heroAlt'] ); ?>" width="1800" height="1354">
-		</div>
-	</section>
+	<?php include locate_template( 'parts/facts.php' ); ?>
 
-	<div class="facts">
-		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fEdition'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['fEditionV'] ); ?></span></div>
-		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fDates'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['tba'] ); ?></span></div>
-		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fPlace'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['tba'] ); ?></span></div>
-		<div class="fact"><span class="fact-label"><?php echo esc_html( $t['fOrg'] ); ?></span><span class="fact-value"><?php echo esc_html( $t['elmi'] ); ?></span></div>
-	</div>
-
-	<section class="band">
-		<div class="wrap">
-			<p class="slogan" lang="en">Barriers down!<br><span>Europe forward!</span></p>
-			<p class="band-body"><?php echo esc_html( $t['bandBody'] ); ?></p>
-		</div>
-	</section>
+	<?php include locate_template( 'parts/band.php' ); ?>
 
 	<section class="section bg-white" id="misja">
 		<div class="wrap stack">
@@ -130,19 +65,7 @@ $cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $
 		</div>
 	</section>
 
-	<section class="section bg-white rule-top" id="o-kongresie">
-		<div class="wrap split split-1-1">
-			<h2 class="h2"><?php echo esc_html( $t['aboutH1'] ); ?> <span class="hl-orange"><?php echo esc_html( $t['aboutH2'] ); ?></span> <?php echo esc_html( $t['aboutH3'] ); ?></h2>
-			<div>
-				<p class="body"><?php echo esc_html( $t['aboutBody'] ); ?></p>
-				<div class="stats">
-					<div class="stat"><span class="stat-n">2013</span><span class="stat-l"><?php echo esc_html( $t['s1'] ); ?></span></div>
-					<div class="stat"><span class="stat-n">9</span><span class="stat-l"><?php echo esc_html( $t['s2'] ); ?></span></div>
-					<div class="stat"><span class="stat-n">17</span><span class="stat-l"><?php echo esc_html( $t['s3'] ); ?></span></div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php include locate_template( 'parts/about.php' ); ?>
 
 	<section class="section bg-grey" id="dla-kogo">
 		<div class="wrap split split-4-8">
@@ -323,18 +246,7 @@ $cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $
 		</div>
 	</section>
 
-	<section class="editions" id="edycje">
-		<span class="editions-label"><?php echo esc_html( $t['editionsH'] ); ?></span>
-		<ul class="pills">
-			<?php foreach ( elmc2027_editions( $lang ) as $edition ) : ?>
-				<li>
-					<a class="pill" href="<?php echo esc_url( $edition['href'] ); ?>" title="<?php echo esc_attr( $edition['label'] ); ?>">
-						<span class="pill-roman"><?php echo esc_html( $edition['roman'] ); ?></span><?php echo esc_html( $edition['year'] ); ?>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
-	</section>
+	<?php include locate_template( 'parts/editions.php' ); ?>
 
 </main>
 
