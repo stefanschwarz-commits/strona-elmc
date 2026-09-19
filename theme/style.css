@@ -473,7 +473,8 @@ input::placeholder { color: var(--grey-500); }
 @media (max-width: 900px) {
   :root { --gutter: 28px; --section-pad: 72px; --column-gap: 32px; }
   .site-header { gap: 14px; padding: 12px var(--gutter); }
-  .hero { grid-template-columns: 1fr; min-height: 0; }
+  /* minmax(0,...) so the column may shrink below the width of the signup capsule */
+  .hero { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .hero-copy { padding: 56px var(--gutter) 48px; }
   .hero-art { min-height: 340px; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -502,6 +503,8 @@ input::placeholder { color: var(--grey-500); }
   .btn { padding: 10px 16px; font-size: 12.5px; }
   .hero-copy { padding: 44px var(--gutter) 40px; gap: 20px; }
   .hero-art { min-height: 260px; }
+  .capsule input { width: 100%; padding: 13px 16px; }
+  .capsule button { padding: 13px 18px; }
   .slogan { font-size: clamp(44px, 13vw, 64px); }
   .h2, .theme-slogan { font-size: 28px; }
   .stats { gap: 28px; }
