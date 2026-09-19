@@ -2,14 +2,17 @@
 
 Ten plik jest wczytywany automatycznie przez każdą sesję Claude Code otwartą w tym repo.
 
-**Ten plik jest inny niż w pozostałych 3 projektach: repo lokalne jest technicznie puste**
-(tylko `.gitignore`, `wyslij.ps1`/`pobierz.ps1` — brak kodu WordPressa), ale **na serwerze
-hostingowym trwa już realna, zaawansowana praca infrastrukturalna** nad uruchomieniem
-elmc.eu jako prawdziwej strony. Treść poniżej zrekonstruowana z surowego transkryptu sesji
-(nie było tu wcześniej żadnej pamięci/notatek) — traktuj to jako punkt startowy, nie jako
-pełny, aktualny na bieżąco log. **Stefan miewa otwarte równolegle inne sesje Claude Code w
-tym folderze — zawsze sprawdź aktualny stan serwera/skrzynki, zanim założysz, że coś poniżej
-wciąż jest aktualne.**
+**Stefan miewa otwarte równolegle inne sesje Claude Code (i Codex) w tym folderze — zawsze
+sprawdź `git log` i aktualny stan serwera, zanim założysz, że coś poniżej wciąż jest aktualne.**
+Lista spraw otwartych: `SPRAWY_OTWARTE.md`.
+
+## 0. Stan na 19.09.2026 — strona działa, jest co rozwijać
+
+- **Repo nie jest już puste**: `theme/` to kompletny motyw WordPressa ELMC 2027, wdrażany
+  automatycznie na `dev.ekmp.pl` (patrz §9 i §10).
+- **`dev.ekmp.pl` działa**: dwujęzyczna strona jednostronicowa według projektu z Claude Design
+  (16 sekcji, PL pod adresem głównym, EN pod `/en/`).
+- Blokady z lipca (PHP 7.3, nieukończony autoinstalator, uprawnienia FTP) — **rozwiązane**.
 
 ## 1. Cel projektu (ustalony ze Stefanem)
 
@@ -103,26 +106,18 @@ transkrypcie. Nie kasować/nadpisywać tej instalacji bez potwierdzenia ze Stefa
   tekstem na czacie tamtej sesji — warto je zrotować po zakończeniu bieżących prac, czat nie
   jest bezpiecznym miejscem do trzymania haseł na stałe.
 
-## 6. Blokada na koniec ostatniej sesji (stan prawdopodobnie wciąż nierozwiązany)
+## 6. Blokady z lipca 2026 — rozwiązane (zostawione jako historia)
 
-- Uruchomiono autoinstalator WordPressa dla `dev.ekmp.pl` (tytuł "European Labour Mobility
-  Congress (ELMC)", user `elmc-admin`, mail `stefan.schwarz@krupowki9.pl`) — **instalacja
-  nigdy się nie ukończyła.**
-- Blokada: `dev.ekmp.pl` pokazywał **PHP 7.3** (WordPress wymaga ≥7.4). Zmieniono w panelu na
-  8.2 i zapisano (potwierdzone zapisane po nieudanej pierwszej próbie) — ale autoinstalator
-  **nadal** przez >50 minut zgłaszał błąd o PHP 7.3.27 — niewyjaśnione, czy to bug hostingu,
-  cache, czy osobny pool PHP-FPM wymagający restartu.
-- Zgłoszenie do wsparcia CyberFolks ("Zmiana wersji PHP nie jest stosowana dla subdomeny
-  dev.ekmp.pl", 2026-07-05 14:40, obsługuje Marcin Stanaszek) doprowadziło do odkrycia, że
-  **usługa `imphost` może być zarejestrowana pod INNYM kontem klienckim CyberFolks niż to, na
-  które zalogowany jest Stefan** — mimo że `stefan.schwarz@labourinstitute.eu` jest
-  autoryzowany w panelu, którym się loguje, CyberFolks twierdzi że nie jest autoryzowany dla
-  konkretnie usługi `imphost`. Wysłano (potwierdzone przez Stefana) drugiego maila do Dawida z
-  pytaniem, pod jakim kontem klienckim faktycznie figuruje `imphost`.
-- **Sesja urwała się w trakcie pętli** sprawdzania co ~10 minut, czy PHP się zmienił / czy
-  Dawid odpowiedział. **Sprawdź aktualny stan PHP na `dev.ekmp.pl` i odpowiedź Dawida, zanim
-  cokolwiek zakładasz** — to najbardziej prawdopodobne miejsce, gdzie realnie trzeba
-  kontynuować.
+- **PHP 7.3 na `dev.ekmp.pl`** blokował autoinstalator WordPressa. Zmiana na 8.2 w panelu
+  ostatecznie zadziałała; WordPress zainstalowany, motyw ELMC 2027 aktywny.
+- **Konto FTP `deploy_elmc` „psuło" stronę (403 / pliki niewidoczne dla WWW)** — okazało się,
+  że to nie był błąd hostingu, tylko **zła ścieżka podkatalogu konta FTP**. Katalog domowy
+  domeny to `/home/users/imphost/public_html/dev.ekmp.pl`, a konto FTP miało wpisane
+  `/dev.ekmp.pl`, czyli `/home/users/imphost/dev.ekmp.pl` — zupełnie inny, nieserwowany
+  katalog (wyjaśnił Maciej Machnik z CyberFolks, 16.08.2026). **Podkatalog konta FTP musi
+  zaczynać się od `public_html/`.** Konto `ligia_ekmp` ma poprawną ścieżkę i to ono służy do
+  wdrożeń. Krok `chmod` w workflow został z tamtych prób — nie szkodzi, nie był sprawdzany
+  osobno po naprawie ścieżki.
 
 ## 7. Kontakt zewnętrzny: Dawid
 
@@ -135,8 +130,7 @@ potwierdzonej odpowiedzi na koniec transkryptu.**
 
 ## 8. Zasady współpracy zespołowej
 
-Pełny, przenośny rdzeń: `C:\Projekty\_zasady-wspolpracy-zespolowej.md`. Kluczowe punkty
-(dopóki nie ma tu jeszcze żadnego kodu, głównie na przyszłość):
+Pełny, przenośny rdzeń: `C:\Projekty\_zasady-wspolpracy-zespolowej.md`. Kluczowe punkty:
 - **Stefan nie przegląda diffów kodu** (uniwersalny fakt) — nie prosić o code review, działać
   i podsumowywać słownie, pytać tylko o decyzje biznesowe/dostępowe.
 - **Dostęp serwerowy tutaj = dostęp do całego zestawu domen z §3** — najbardziej rozległy
@@ -144,5 +138,47 @@ Pełny, przenośny rdzeń: `C:\Projekty\_zasady-wspolpracy-zespolowej.md`. Klucz
 - **Nie uwierzytelniać się jako użytkownik nawet ze znanym hasłem** (§5) — Stefan loguje/
   autoryzuje się sam do paneli/kont trzecich (Cloudflare, CyberFolks, Dropbox w innych
   projektach, itp.) — to spójna zasada w całym portfelu, nie tylko tutaj.
-- Gdy tu w końcu powstanie kod WordPressa (nowa instalacja dla ELMC 2027) — dopisać resztę
-  sekcji (system projektowy, architektura) analogicznie do `strona-elmi`.
+- Sposób pracy na żywej stronie (pomiary zamiast wrażeń, wdrożenie i sprawdzenie w tej samej
+  sesji, raport po polsku bez żargonu): skill `zywa-strona`.
+
+## 9. Motyw ELMC 2027 — architektura
+
+Kod: `theme/` (motyw WordPressa, katalog na serwerze: `wp-content/themes/elmc2027`).
+
+- `style.css` — nagłówek motywu + **cały** system wizualny (tokeny w `:root`, sekcje, RWD).
+  Brak osobnych plików CSS, brak JavaScriptu na froncie.
+- `functions.php` — konfiguracja, wczytanie fontów, zapis na powiadomienia (zgoda + podwójne
+  potwierdzenie + wypis + przekazanie do rejestru zgód), wersja bazy (`ELMC2027_DB_VERSION`),
+  stała `ELMC2027_CONTACT_EMAIL`.
+- `inc/copy.php` — **wszystkie teksty PL/EN** i dane powtarzalnych bloków (edycje, poziomy
+  partnerstwa, filary). Tu się zmienia treść, nie w szablonach.
+- `inc/i18n.php` — dwa języki: PL pod `/`, EN pod `/en/` (reguła przepisania + `hreflang`).
+- `inc/cfs.php` — Call for Speakers: tabela, walidacja, mail na `ELMC2027_CONTACT_EMAIL`.
+- `inc/admin.php` — podgląd zapisów i zgłoszeń w panelu WP (menu „ELMC 2027").
+- `header.php` / `footer.php` / `front-page.php` / `page.php` / `index.php` — szablony.
+- `assets/img/` — `kv-elmc.jpg` (mural), `logo-elmc.png`, `logo-elmi.jpg`, `logo-psod.jpg`.
+
+**System wizualny** (z pakietu Claude Design, 19.09.2026): pomarańcz `#E9961F` / `#F3B33D`,
+granat `#1F3C8F`, czerń `#111`, ciepłe szarości; fonty **Archivo** (800/700/500/400) i
+**Space Mono** (etykiety, liczby); pełnoszerokościowe tła sekcji na przemian, czarne linie
+2 px, przyciski-pigułki, **bez cieni, gradientów, ikon i emoji**; puste miejsca na zdjęcia to
+przerywane ramki z podpisem. Źródłowy pakiet projektu nie jest w repo — Stefan ma go w
+`Downloads` (`ELMC 2027 Homepage Mockups-handoff.zip`).
+
+**Zasada treści:** polski jest oryginałem, angielski to tłumaczenie robocze. Żadnych
+wymyślonych nazwisk, zdjęć, dat ani logo — czego nie ma, to zostaje pustą ramką z podpisem
+„do uzupełnienia".
+
+## 10. Wdrożenie
+
+`git push` do `main` ze zmianą w `theme/**` uruchamia GitHub Actions
+(`.github/workflows/deploy.yml`), które wgrywa motyw przez FTP na `dev.ekmp.pl`
+(konto `ligia_ekmp`, sekrety `FTP_SERVER`/`FTP_USERNAME`/`FTP_PASSWORD` w ustawieniach repo).
+Repozytorium: `github.com/stefanschwarz-commits/strona-elmc` (publiczne).
+
+Zmiany w bazie i panelu WordPressa **nie** są w repozytorium (strona główna jest ustawiona
+w Ustawieniach → Czytanie na stronę „ELMC 2027 — Coming Soon"; jej treść jest ignorowana,
+bo `front-page.php` renderuje sekcje z kodu).
+
+Sprawdzenie po wdrożeniu: kod odpowiedzi dla `/` i `/en/`, obecność zmiany w kodzie strony
+z pominięciem pamięci podręcznej, brak przewijania w poziomie przy 375 px.
