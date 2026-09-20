@@ -28,25 +28,23 @@ function elmc2027_setup() {
 add_action( 'after_setup_theme', 'elmc2027_setup' );
 
 function elmc2027_assets() {
-	// Archivo (display + body) and Space Mono (labels) - the two faces of the design system.
-	wp_enqueue_style(
-		'elmc2027-fonts',
-		'https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap',
-		array(),
-		null
-	);
+	// Archivo (display + body) and Space Mono (labels) are served from this server -
+	// see the @font-face block at the top of style.css. No request goes to Google.
 	wp_enqueue_style(
 		'elmc2027-style',
 		get_stylesheet_uri(),
-		array( 'elmc2027-fonts' ),
+		array(),
 		wp_get_theme()->get( 'Version' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'elmc2027_assets' );
 
+// The two faces used at the top of the page are fetched early, straight from this server.
 add_action( 'wp_head', function () {
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	$fonts = get_template_directory_uri() . '/assets/fonts/';
+	foreach ( array( 'archivo-latin.woff2', 'spacemono-400-latin.woff2' ) as $file ) {
+		printf( '<link rel="preload" as="font" type="font/woff2" href="%s" crossorigin>' . "\n", esc_url( $fonts . $file ) );
+	}
 }, 0 );
 
 /**
