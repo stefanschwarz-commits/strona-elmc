@@ -62,7 +62,7 @@ function elmc2027_copy( $lang = null ) {
 		'aboutBody'    => 'Kilkuset uczestników na każdej edycji: administracja, biznes, nauka, partnerzy społeczni i politycy – z Polski, z całej UE i spoza niej. Dwa dni: obrady plenarne z udziałem ekspertów i decydentów oraz praktyczne warsztaty w mniejszych grupach.',
 		's1'           => 'pierwsza edycja',
 		's2'           => 'edycji za nami',
-		's3'           => 'krajów w 2026',
+		's3'           => 'krajów wśród uczestników w 2026',
 
 		'whoH'         => 'Dla kogo jest Kongres',
 		'whoLead'      => 'Pięć środowisk, które co roku spotykają się przy jednym stole.',
@@ -76,7 +76,7 @@ function elmc2027_copy( $lang = null ) {
 
 		'recapH'       => 'Tak było w 2026',
 		'recapLink'    => 'Pełna relacja z IX edycji',
-		'recapStat'    => 'krajów reprezentowanych w Warszawie',
+		'recapStat'    => 'krajów, z których przyjechali uczestnicy',
 		'recapBody'    => 'IX edycja odbyła się w Warszawie, w hotelu Crowne Plaza Warsaw – The HUB. Dwa dni obrad plenarnych, warsztaty Warm-Up i sesja MobileCare zgromadziły uczestników z 17 krajów.',
 		'recapSlots'   => array( 'Sala plenarna – szeroki kadr', 'Panel / prelegent', 'Kuluary / networking', 'Warsztat' ),
 
@@ -191,7 +191,7 @@ function elmc2027_copy( $lang = null ) {
 		'aboutBody'    => 'Several hundred participants at each edition: public administration, business, academia, social partners and politicians – from Poland, across the EU and beyond. Two days: plenary debates with experts and decision-makers, plus hands-on workshops in smaller groups.',
 		's1'           => 'first edition',
 		's2'           => 'editions so far',
-		's3'           => 'countries in 2026',
+		's3'           => 'countries among participants in 2026',
 
 		'whoH'         => 'Who the Congress is for',
 		'whoLead'      => 'Five communities that meet at one table every year.',
@@ -205,7 +205,7 @@ function elmc2027_copy( $lang = null ) {
 
 		'recapH'       => 'Looking back at 2026',
 		'recapLink'    => 'Full recap of the 9th edition',
-		'recapStat'    => 'countries represented in Warsaw',
+		'recapStat'    => 'countries participants came from',
 		'recapBody'    => 'The 9th edition took place in Warsaw, at the Crowne Plaza Warsaw – The HUB hotel. Two days of plenary debates, the Warm-Up workshops and the MobileCare session brought together participants from 17 countries.',
 		'recapSlots'   => array( 'Plenary hall – wide shot', 'Panel / speaker', 'Networking', 'Workshop' ),
 
