@@ -28,10 +28,15 @@ główną elmc.eu (nadchodząca edycja + menu "Poprzednie edycje" do archiwów 2
 docelowo najpierw na `dev.ekmp.pl` jako bezpieczny plac budowy (nie wymaga zmian DNS/Cloudflare,
 bo ta subdomena już wskazuje na hosting CyberFolks).
 
-## 2. Stan dziś: `elmc.eu` żyje, ale tylko jako przekierowanie
+## 2. Stan dziś: `elmc.eu` pokazuje stronę ELMC 2027 (od 20.09.2026)
 
-- `https://elmc.eu/` → 301 → `https://labourinstitute.eu/en/elmc2025/` (podstrona głównej
-  strony ELMI o kongresie 2025). `https://ekmp.pl/` → 301 → `https://labourinstitute.eu/ekmp2025/`.
+- **Decyzja Stefana (19.09.2026): `elmc.eu` jest domeną główną.** Od 20.09.2026:
+  `https://elmc.eu/` → strona tymczasowa ELMC 2027 (PL), `https://elmc.eu/en/` (EN),
+  `ekmp.pl` i `www.ekmp.pl` → 301 na `https://elmc.eu/`, `ekmp.pl/en/` → `https://elmc.eu/en/`.
+  WordPress produkcyjny stoi w `public_html/ekmp.pl/2027/` (obok roczników), a
+  `public_html/ekmp.pl/index.php` jest plikiem startowym. Tabele w bazie placu budowy
+  (`baza23187_611790`) z przedrostkiem `elmc_`; własna baza do założenia w panelu, gdy będzie potrzebna.
+  Kopie plików sprzed zmiany: `~/kwarantanna-20260913/elmc-przepiecie-20260920/`.
 - **Mechanizm przekierowania:** reguły `mod_rewrite` w `.htaccess` na serwerze
   (`/home/users/imphost/public_html/ekmp.pl/.htaccess`), skonfigurowane przez Dawida (komentarze
   w pliku: "dsierzy - 20241106 - przekieruj ruch..."), NIE reguła Cloudflare Page/Redirect Rule
@@ -174,6 +179,10 @@ wymyślonych nazwisk, zdjęć, dat ani logo — czego nie ma, to zostaje pustą 
 „do uzupełnienia".
 
 ## 10. Wdrożenie
+
+**Produkcja (elmc.eu) nie jest wdrażana automatycznie.** Po sprawdzeniu zmiany na
+`dev.ekmp.pl` przenosi ją na produkcję skrypt na serwerze:
+`~/bin/elmc-motyw-na-produkcje.sh` (kopiuje motyw z dev do `ekmp.pl/2027`).
 
 `git push` do `main` ze zmianą w `theme/**` uruchamia GitHub Actions
 (`.github/workflows/deploy.yml`), które wgrywa motyw przez FTP na `dev.ekmp.pl`

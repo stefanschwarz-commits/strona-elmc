@@ -39,8 +39,14 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
 - **Nawigacja na telefonie** — poniżej 1100 px linki sekcji są ukryte (zostaje logo, PL/EN
   i przycisk zapisu). Projekt nie definiuje wersji mobilnej; jeśli ma być menu, trzeba je
   zaprojektować.
-- **Przekierowanie elmc.eu** — strona docelowo ma stać pod elmc.eu (dziś przekierowanie na
-  labourinstitute.eu przez `.htaccess`). Osobny krok, wymaga DNS/Cloudflare i decyzji o dacie.
+- ~~**Przekierowanie elmc.eu**~~ — zrobione 20.09.2026: elmc.eu pokazuje stronę tymczasową,
+  ekmp.pl przekierowuje na elmc.eu, wszystkie archiwa działają pod obiema domenami.
+- **Certyfikat SSL dla dev.ekmp.pl wygasł** — plac budowy działa tylko bez „https”. Do odnowienia
+  w panelu (wymaga logowania Stefana).
+- **Własna baza danych dla elmc.eu** — dziś strona produkcyjna używa tabel z przedrostkiem `elmc_`
+  w bazie placu budowy. Działa i jest w nocnych kopiach; rozdzielić, gdy Stefan założy bazę w panelu.
+- **Podejrzane konto `davanderson`** (rejestracja z 2022 r., adres `emalupe.com`) w bazie placu
+  budowy — bez uprawnień, ale do usunięcia przy porządkach.
 - ~~**Zagadka `elmc.eu/2019/`**~~ — wyjaśniona 19.09.2026: to nie wtyczka, tylko reguła
   „Przekierowanie zamówione przez Dominika" w `.htaccess` roczników **2013, 2017 i 2019**
   (`public_html/ekmp.pl/<rok>/.htaccess`): adres z domeną elmc.eu idzie na `www.ekmp.pl/`,
