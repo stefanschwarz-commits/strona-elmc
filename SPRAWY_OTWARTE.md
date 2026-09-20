@@ -4,6 +4,9 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
 
 ## Czeka na Stefana
 
+- **Logo ELMC w wersji wektorowej** — prompt do Claude Design przekazany 20.09.2026;
+  gotowe SVG (wersja czarna i biała) wklej w rozmowie, podmienię je w nagłówku i stopce.
+
 - **Test formularza Call for Speakers** — wyślij jedno zgłoszenie ze strony
   (dev.ekmp.pl → sekcja Call for Speakers) i sprawdź, czy mail dotarł na kontakt@ekmp.pl.
   Nie zrobiłem tego sam, bo to wysyłka wiadomości w Twoim imieniu. Przy okazji zobaczysz
