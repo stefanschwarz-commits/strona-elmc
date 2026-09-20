@@ -9,15 +9,15 @@ Załatwione przekreślamy z datą.
 |---|---|---|---|
 | ~~0~~ | ~~Liczba 17 krajów~~ | ~~potwierdzone 20.09.2026, poprawione brzmienie~~ | ~~10 s~~ |
 | 1 | Edycja 2022 — czym była | lista poprzednich edycji ma dziś pozycję bez numeru | 30 s |
-| 2 | Daty i miejsce 2027 | zamiast „do ogłoszenia” konkret, np. „I kwartał 2027” albo „Kraków” | 30 s |
-| 3 | Hasło edycji 2027 | zdanie w sekcji tematu edycji | 15 s |
-| 4 | Partner Strategiczny | „współtworzenie programu” → „udział w pracach nad programem” | 15 s |
-| 5 | Pole na temat w zgłoszeniu prelegenta | formularz pyta o temat, ale nie ma gdzie go wpisać | 10 s |
-| 6 | „Odpowiadamy w ciągu 2 dni roboczych” | obietnica przy partnerstwie — zostaje tylko, jeśli ktoś pilnuje skrzynki | 10 s |
-| 7 | Adres kontaktowy: kontakt@elmc.eu czy kontakt@ekmp.pl | adres w stopce, przy partnerstwie i w zgłoszeniach | 30 s |
+| 2 | ~~Daty i miejsce 2027~~ | czeka na Ligię: data ma być potwierdzona 21.09, miejsce w negocjacjach (Auditorium Maximum). Na stronie „do ogłoszenia” | — |
+| ~~3~~ | ~~Hasło edycji 2027~~ | ~~zostaje bez zmian (20.09)~~ | ~~15 s~~ |
+| ~~4~~ | ~~Partner Strategiczny~~ | ~~zmienione 20.09~~ | ~~15 s~~ |
+| ~~5~~ | ~~Pole na temat w zgłoszeniu prelegenta~~ | ~~dodane 20.09~~ | ~~10 s~~ |
+| ~~6~~ | ~~„Odpowiadamy w ciągu 2 dni roboczych”~~ | ~~zostaje (20.09)~~ | ~~10 s~~ |
+| ~~7~~ | ~~Adres kontaktowy~~ | ~~kontakt@elmc.eu wdrożone 20.09, do sprawdzenia próbnym zgłoszeniem~~ | ~~30 s~~ |
 | 8 | Próbny zapis na powiadomienia z własnego adresu | sprawdza, czy mail potwierdzający dociera i czy nie ląduje w spamie | 2 min |
 | 9 | Logo ELMC w wersji wektorowej (SVG) | ostrość logo na dużych ekranach i w druku — wystarczy powiedzieć, czy istnieje | 30 s |
-| 10 | Wskazanie folderu ze zdjęciami z edycji 2026 | cztery puste ramki na pełnej stronie zamienią się w zdjęcia | 1 min |
+| 10 | Materiały od Ligii | Ligia proponuje zebrać zdjęcia, treści i linki w jednym folderze — odpowiadasz jej sam | 1 min |
 
 ## Szczegóły pozycji
 
