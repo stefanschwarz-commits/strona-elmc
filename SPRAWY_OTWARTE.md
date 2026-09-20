@@ -12,9 +12,8 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   Nie zrobiłem tego sam, bo to wysyłka wiadomości w Twoim imieniu. Przy okazji zobaczysz
   zgłoszenie w panelu WordPressa (menu „ELMC 2027" → Call for Speakers) — to sprawdzi
   wszystko naraz: zapis w bazie, mail i panel.
-- **Adres kontaktowy** — na stronie (partnerstwo, stopka, zgłoszenia prelegentów) jest
-  `kontakt@ekmp.pl`, tak jak w projekcie. Przy starcie elmc.eu do rozważenia `kontakt@elmc.eu`
-  (19.09 ustaliłeś go jako adres tej strony dla spraw RODO). Zmiana to jedno miejsce w kodzie.
+- ~~**Adres kontaktowy**~~ — 20.09.2026 zmieniony na `kontakt@elmc.eu` (decyzja Stefana);
+  do sprawdzenia próbnym zgłoszeniem, czy skrzynka odbiera.
 - **Teksty do uzupełnienia w projekcie** (z pakietu Claude Design): oficjalna treść misji,
   opis ELMI, opisy poziomów partnerstwa, temat edycji 2027.
 - **Materiały do pustych miejsc**: 4 zdjęcia z relacji 2026, 8 prelegentów (nazwiska,
@@ -37,11 +36,11 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
 - **Polska wersja informacji o danych** — strona „Privacy notice" jest po angielsku, a zgoda
   przy polskim formularzu linkuje właśnie do niej. Treść prawna czeka na prawnika (koniec
   projektu), więc na razie zostaje jak jest.
-- **Fonty z Google Fonts** — ładowane z serwerów Google. Do rozważenia hosting własny
-  (RODO / szybkość). Pakiet projektowy nie zawiera plików .woff2.
-- **Nawigacja na telefonie** — poniżej 1100 px linki sekcji są ukryte (zostaje logo, PL/EN
-  i przycisk zapisu). Projekt nie definiuje wersji mobilnej; jeśli ma być menu, trzeba je
-  zaprojektować.
+- ~~**Fonty z Google Fonts**~~ — 20.09.2026 przeniesione na własny serwer (Archivo zmienny
+  400–900 i Space Mono 400/700, latin + latin-ext, licencja SIL OFL 1.1). Sprawdzone: zero
+  połączeń z serwerami Google przy wejściu na stronę.
+- ~~**Nawigacja na telefonie**~~ — 20.09.2026 dodane rozwijane „Menu” poniżej 1100 px
+  (bez JavaScriptu), panel na całą szerokość pod nagłówkiem.
 - ~~**Przekierowanie elmc.eu**~~ — zrobione 20.09.2026: elmc.eu pokazuje stronę tymczasową,
   ekmp.pl przekierowuje na elmc.eu, wszystkie archiwa działają pod obiema domenami.
 - **Certyfikat SSL dla dev.ekmp.pl wygasł** — plac budowy działa tylko bez „https”. Do odnowienia
