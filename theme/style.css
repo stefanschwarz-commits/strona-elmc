@@ -3,7 +3,7 @@ Theme Name: ELMC 2027
 Theme URI: https://elmc.eu
 Author: European Labour Mobility Institute
 Description: Motyw Europejskiego Kongresu Mobilności Pracy 2027 (dev.ekmp.pl). Dwujęzyczny PL/EN.
-Version: 0.3.0
+Version: 0.4.0
 Requires at least: 6.4
 Requires PHP: 8.0
 Text Domain: elmc2027
@@ -359,11 +359,14 @@ input::placeholder { color: var(--grey-500); }
 .thanks-b { margin: 0; font: 400 15px/1.6 var(--font-body); color: var(--ink-soft); }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field-label { font: 700 11px var(--font-mono); color: var(--grey-600); text-transform: uppercase; }
-.field input {
+.field input,
+.field textarea {
   padding: 13px 16px; border: 1.5px solid var(--grey-300); border-radius: 6px;
   font: 400 15px var(--font-body); color: var(--ink); outline: none; background: #fff;
 }
-.field input:focus { border-color: var(--ink); }
+.field input:focus,
+.field textarea:focus { border-color: var(--ink); }
+.field textarea { resize: vertical; min-height: 84px; font-family: var(--font-body); }
 .check { display: flex; gap: 12px; align-items: flex-start; font: 400 13px/1.5 var(--font-body); color: var(--grey-700); cursor: pointer; }
 .check input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--ink); flex: none; }
 .btn-block {

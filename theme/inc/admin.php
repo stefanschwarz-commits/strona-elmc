@@ -74,16 +74,17 @@ function elmc2027_admin_cfs_page() {
 		<h1>Zgłoszenia prelegentów (Call for Speakers)</h1>
 		<p>Każde zgłoszenie jest też wysyłane mailem na <?php echo esc_html( ELMC2027_CONTACT_EMAIL ); ?>. Kolumna „Mail” pokazuje, czy wysyłka się powiodła.</p>
 		<table class="widefat striped">
-			<thead><tr><th>Imię i nazwisko</th><th>Organizacja / stanowisko</th><th>E-mail</th><th>Język</th><th>Mail</th><th>Zgłoszono</th><th>Wersja zgody</th></tr></thead>
+			<thead><tr><th>Imię i nazwisko</th><th>Organizacja / stanowisko</th><th>E-mail</th><th>Temat</th><th>Język</th><th>Mail</th><th>Zgłoszono</th><th>Wersja zgody</th></tr></thead>
 			<tbody>
 			<?php if ( empty( $rows ) ) : ?>
-				<tr><td colspan="7">Brak zgłoszeń.</td></tr>
+				<tr><td colspan="8">Brak zgłoszeń.</td></tr>
 			<?php else : ?>
 				<?php foreach ( $rows as $row ) : ?>
 					<tr>
 						<td><?php echo esc_html( $row->name ); ?></td>
 						<td><?php echo esc_html( $row->organisation ); ?></td>
 						<td><a href="mailto:<?php echo esc_attr( $row->email ); ?>"><?php echo esc_html( $row->email ); ?></a></td>
+					<td><?php echo esc_html( isset( $row->topic ) ? $row->topic : '' ); ?></td>
 						<td><?php echo esc_html( strtoupper( $row->lang ) ); ?></td>
 						<td><?php echo $row->mail_sent ? 'wysłany' : 'nie wyszedł'; ?></td>
 						<td><?php echo esc_html( $row->created_at ); ?></td>

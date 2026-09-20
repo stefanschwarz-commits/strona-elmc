@@ -148,16 +148,20 @@ $cfs_state = isset( $_GET['elmc2027_cfs'] ) ? sanitize_text_field( wp_unslash( $
 					<input type="hidden" name="lang" value="<?php echo esc_attr( $lang ); ?>">
 					<?php wp_nonce_field( 'elmc2027_cfs', 'elmc2027_cfs_nonce' ); ?>
 					<label class="field">
-						<span class="field-label"><?php echo esc_html( $t['fName'] ); ?></span>
+						<span class="field-label"><?php echo esc_html( $t['fName'] ); ?> *</span>
 						<input type="text" name="cfs_name" required>
 					</label>
 					<label class="field">
-						<span class="field-label"><?php echo esc_html( $t['fOrgPos'] ); ?></span>
+						<span class="field-label"><?php echo esc_html( $t['fOrgPos'] ); ?> *</span>
 						<input type="text" name="cfs_org" required>
 					</label>
 					<label class="field">
-						<span class="field-label">E-mail</span>
+						<span class="field-label">E-mail *</span>
 						<input type="email" name="cfs_email" required>
+					</label>
+					<label class="field">
+						<span class="field-label"><?php echo esc_html( $t['fTopic'] ); ?></span>
+						<textarea name="cfs_topic" rows="3"></textarea>
 					</label>
 					<input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 					<label class="check">

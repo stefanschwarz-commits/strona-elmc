@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Where congress e-mail goes (Call for Speakers, partnership enquiries). */
-const ELMC2027_CONTACT_EMAIL = 'kontakt@ekmp.pl';
+const ELMC2027_CONTACT_EMAIL = 'kontakt@elmc.eu';
 
 /** Bump when the database layout changes; tables are then rebuilt on the next request. */
-const ELMC2027_DB_VERSION = '3';
+const ELMC2027_DB_VERSION = '4';
 
 require_once get_template_directory() . '/inc/i18n.php';
 require_once get_template_directory() . '/inc/copy.php';

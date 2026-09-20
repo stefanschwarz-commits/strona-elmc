@@ -30,6 +30,7 @@ function elmc2027_install_cfs_table() {
 		name VARCHAR(190) NOT NULL,
 		organisation VARCHAR(255) NOT NULL,
 		email VARCHAR(190) NOT NULL,
+		topic TEXT NULL,
 		lang VARCHAR(5) NOT NULL DEFAULT 'pl',
 		consent_version VARCHAR(40) NOT NULL DEFAULT '',
 		consent_text TEXT NULL,
@@ -84,6 +85,8 @@ function elmc2027_handle_cfs() {
 	$name  = isset( $_POST['cfs_name'] ) ? sanitize_text_field( wp_unslash( $_POST['cfs_name'] ) ) : '';
 	$org   = isset( $_POST['cfs_org'] ) ? sanitize_text_field( wp_unslash( $_POST['cfs_org'] ) ) : '';
 	$email = isset( $_POST['cfs_email'] ) ? strtolower( sanitize_email( wp_unslash( $_POST['cfs_email'] ) ) ) : '';
+	// Optional: what the person wants to talk about - useful straight away when the programme is put together.
+	$topic = isset( $_POST['cfs_topic'] ) ? sanitize_textarea_field( wp_unslash( $_POST['cfs_topic'] ) ) : '';
 
 	if ( '' === $name || '' === $org ) {
 		elmc2027_cfs_redirect( 'fields', $lang );
@@ -107,6 +110,7 @@ function elmc2027_handle_cfs() {
 			'name'            => mb_substr( $name, 0, 190 ),
 			'organisation'    => mb_substr( $org, 0, 255 ),
 			'email'           => $email,
+			'topic'           => mb_substr( $topic, 0, 2000 ),
 			'lang'            => $lang,
 			'consent_version' => elmc2027_cfs_consent_version( $lang ),
 			'consent_text'    => elmc2027_cfs_consent_text( $lang ),
@@ -126,6 +130,7 @@ function elmc2027_handle_cfs() {
 				'Imie i nazwisko: ' . $name,
 				'Organizacja / stanowisko: ' . $org,
 				'E-mail: ' . $email,
+				'Temat: ' . ( '' !== $topic ? $topic : '(nie podano)' ),
 				'Jezyk formularza: ' . strtoupper( $lang ),
 				'Czas: ' . current_time( 'mysql' ),
 				'',
