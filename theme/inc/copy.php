@@ -25,6 +25,7 @@ function elmc2027_copy( $lang = null ) {
 		'navPartners'  => 'Partnerstwo',
 		'notify'       => 'Powiadom mnie',
 		'skipToMain'   => 'Przejdź do treści',
+		'menu'         => 'Menu',
 
 		'heroKicker'   => 'Kolejna edycja – w przygotowaniu',
 		'heroTitle'    => 'Europejski Kongres Mobilności Pracy',
@@ -156,6 +157,7 @@ function elmc2027_copy( $lang = null ) {
 		'navPartners'  => 'Partnership',
 		'notify'       => 'Notify me',
 		'skipToMain'   => 'Skip to content',
+		'menu'         => 'Menu',
 
 		'heroKicker'   => 'Next edition – in preparation',
 		'heroTitle'    => 'European Labour Mobility Congress',

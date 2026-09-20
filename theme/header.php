@@ -37,6 +37,19 @@ $elmc_teaser = elmc2027_is_teaser();
 		<a href="<?php echo esc_url( $elmc_home . '#cfs' ); ?>">Call for Speakers</a>
 		<a href="<?php echo esc_url( $elmc_home . '#partnerstwo' ); ?>"><?php echo esc_html( $elmc_t['navPartners'] ); ?></a>
 	</nav>
+
+	<?php /* Below 1100px the row of links does not fit; the same links open from here. */ ?>
+	<details class="menu">
+		<summary><?php echo esc_html( $elmc_t['menu'] ); ?></summary>
+		<nav class="menu-panel" aria-label="<?php echo esc_attr( $elmc_t['menu'] ); ?>">
+			<a href="<?php echo esc_url( $elmc_home . '#misja' ); ?>"><?php echo esc_html( $elmc_t['navMission'] ); ?></a>
+			<a href="<?php echo esc_url( $elmc_home . '#o-kongresie' ); ?>"><?php echo esc_html( $elmc_t['navAbout'] ); ?></a>
+			<a href="<?php echo esc_url( $elmc_home . '#relacja' ); ?>"><?php echo esc_html( $elmc_t['navRecap'] ); ?></a>
+			<a href="<?php echo esc_url( $elmc_home . '#prelegenci' ); ?>"><?php echo esc_html( $elmc_t['navSpeakers'] ); ?></a>
+			<a href="<?php echo esc_url( $elmc_home . '#cfs' ); ?>">Call for Speakers</a>
+			<a href="<?php echo esc_url( $elmc_home . '#partnerstwo' ); ?>"><?php echo esc_html( $elmc_t['navPartners'] ); ?></a>
+		</nav>
+	</details>
 	<?php endif; ?>
 
 	<div class="lang">
