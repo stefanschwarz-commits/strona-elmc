@@ -9,7 +9,7 @@ $elmc_home = elmc2027_home_url( $elmc_lang );
 ?>
 <footer class="site-footer" id="kontakt">
 	<div class="footer-brand">
-		<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo-elmc.png' ); ?>" alt="European Labour Mobility Congress" width="412" height="415">
+		<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo-elmc-negatyw.svg' ); ?>" alt="European Labour Mobility Congress" width="412" height="415">
 		<p>European Labour Mobility Congress<br><?php echo esc_html( $elmc_t['orgLabel'] ); ?>: <?php echo esc_html( $elmc_t['elmi'] ); ?></p>
 	</div>
 	<div class="footer-cols">

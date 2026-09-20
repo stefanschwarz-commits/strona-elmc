@@ -22,7 +22,7 @@ $elmc_teaser = elmc2027_is_teaser();
 
 <header class="site-header">
 	<a class="brand" href="<?php echo esc_url( $elmc_page ); ?>">
-		<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo-elmc.png' ); ?>" alt="European Labour Mobility Congress" width="412" height="415">
+		<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/logo-elmc.svg' ); ?>" alt="European Labour Mobility Congress" width="412" height="415">
 		<span class="brand-year">2027</span>
 	</a>
 
