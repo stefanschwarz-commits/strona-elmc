@@ -29,7 +29,7 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   przekazywanie, tak jak przy zapisach na powiadomienia.
 - **Alias kontakt@ekmp.pl** — czy istnieje i do której skrzynki trafia (dopisane do listy
   sprawdzeń w panelu Microsoft 365 we wspólnym repo RODO, 19.09.2026).
-- **Wektorowe logo ELMC (SVG)** — dziś mamy tylko PNG; potrzebne do druku i ostrych ekranów.
+- ~~**Wektorowe logo ELMC (SVG)**~~ — zrobione 20.09.2026.
 
 ## Do zrobienia po stronie kodu
 
