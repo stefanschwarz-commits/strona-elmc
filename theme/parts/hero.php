@@ -60,6 +60,10 @@
 		</div>
 	</div>
 	<div class="hero-art">
-		<img src="<?php echo esc_url( $assets . 'kv-elmc.jpg' ); ?>" alt="<?php echo esc_attr( $t['heroAlt'] ); ?>" width="1800" height="1354">
+		<?php // WebP: 57 kB on a phone, 162 kB on a desktop (the JPG is 500 kB and stays as a fallback). ?>
+		<picture>
+			<source type="image/webp" srcset="<?php echo esc_url( $assets . 'kv-elmc-900.webp' ); ?> 900w, <?php echo esc_url( $assets . 'kv-elmc-1400.webp' ); ?> 1400w" sizes="(max-width: 900px) 100vw, 50vw">
+			<img src="<?php echo esc_url( $assets . 'kv-elmc.jpg' ); ?>" alt="<?php echo esc_attr( $t['heroAlt'] ); ?>" width="1800" height="1334" fetchpriority="high">
+		</picture>
 	</div>
 </section>

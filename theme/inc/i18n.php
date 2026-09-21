@@ -114,12 +114,36 @@ add_filter( 'pre_get_document_title', function ( $title ) {
 add_action( 'wp_head', function () {
 	$is_home = is_front_page() || 'en' === get_query_var( 'elmc_lang' ) || 'teaser' === get_query_var( 'elmc_view' );
 	if ( $is_home ) {
-		printf( '<meta name="description" content="%s">' . "\n", esc_attr( elmc2027_t( 'heroLead' ) ) );
+		$lang = elmc2027_lang();
+		printf( '<meta name="description" content="%s">' . "\n", esc_attr( elmc2027_t( 'metaDesc' ) ) );
 		printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( elmc2027_t( 'docTitle' ) ) );
-		printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( elmc2027_t( 'heroLead' ) ) );
-		printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_template_directory_uri() . '/assets/img/kv-elmc.jpg' ) );
+		printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( elmc2027_t( 'metaDesc' ) ) );
+		// Share card: 1200x630 crop of the mural (logo, slogan and the figure) - the size LinkedIn and Facebook expect.
+		printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_template_directory_uri() . '/assets/img/og-elmc.jpg' ) );
+		echo '<meta property="og:image:width" content="1200">' . "\n" . '<meta property="og:image:height" content="630">' . "\n";
+		printf( '<meta property="og:image:alt" content="%s">' . "\n", esc_attr( elmc2027_t( 'heroAlt' ) ) );
 		printf( '<meta property="og:url" content="%s">' . "\n", esc_url( elmc2027_page_url() ) );
 		echo '<meta property="og:type" content="website">' . "\n";
+		echo '<meta property="og:site_name" content="ELMC – European Labour Mobility Congress">' . "\n";
+		printf( '<meta property="og:locale" content="%s">' . "\n", 'en' === $lang ? 'en_GB' : 'pl_PL' );
+		printf( '<meta property="og:locale:alternate" content="%s">' . "\n", 'en' === $lang ? 'pl_PL' : 'en_GB' );
+		echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+		// Who stands behind the site, for search engines. No Event markup yet - it needs a date and a venue.
+		$data = array(
+			'@context'      => 'https://schema.org',
+			'@type'         => 'WebSite',
+			'name'          => 'European Labour Mobility Congress (ELMC)',
+			'alternateName' => 'Europejski Kongres Mobilności Pracy',
+			'url'           => elmc2027_home_url( 'pl' ),
+			'inLanguage'    => 'en' === $lang ? 'en' : 'pl',
+			'publisher'     => array(
+				'@type'         => 'Organization',
+				'name'          => 'European Labour Mobility Institute',
+				'alternateName' => 'Europejski Instytut Mobilności Pracy',
+				'url'           => 'https://labourinstitute.eu',
+			),
+		);
+		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";
 	}
 	printf( '<link rel="alternate" hreflang="pl" href="%s">' . "\n", esc_url( elmc2027_page_url( 'pl' ) ) );
 	printf( '<link rel="alternate" hreflang="en" href="%s">' . "\n", esc_url( elmc2027_page_url( 'en' ) ) );

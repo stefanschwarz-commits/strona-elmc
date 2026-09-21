@@ -147,6 +147,7 @@ function elmc2027_copy( $lang = null ) {
 		'mailPrivacy'  => 'Jak przetwarzamy Twoje dane: ',
 		'mailSign'     => 'Europejski Kongres Mobilności Pracy',
 		'docTitle'     => 'ELMC 2027 – Europejski Kongres Mobilności Pracy',
+		'metaDesc'     => 'ELMC – Europejski Kongres Mobilności Pracy. Od 2013 roku forum o swobodzie świadczenia usług i delegowaniu pracowników w UE. Edycja 2027: zapisz się na powiadomienia.',
 	);
 
 	$en = array(
@@ -279,6 +280,7 @@ function elmc2027_copy( $lang = null ) {
 		'mailPrivacy'  => 'Information on how we process your data: ',
 		'mailSign'     => 'European Labour Mobility Congress',
 		'docTitle'     => 'ELMC 2027 – European Labour Mobility Congress',
+		'metaDesc'     => 'ELMC – European Labour Mobility Congress. Since 2013, the forum on the freedom to provide services and the posting of workers in the EU. 2027 edition: get notified.',
 	);
 
 	return 'en' === $lang ? $en : $pl;

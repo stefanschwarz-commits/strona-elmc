@@ -47,6 +47,27 @@ add_action( 'wp_head', function () {
 	}
 }, 0 );
 
+// Icon in the browser tab, on phone home screens and next to the site in Google results
+// (the congress logo on white, so it stays visible in dark browser themes too).
+add_action( 'wp_head', function () {
+	$icons = get_template_directory_uri() . '/assets/icons/';
+	printf( '<link rel="icon" href="%s" sizes="48x48">' . "\n", esc_url( $icons . 'favicon.ico' ) );
+	printf( '<link rel="icon" type="image/png" sizes="32x32" href="%s">' . "\n", esc_url( $icons . 'favicon-32.png' ) );
+	printf( '<link rel="icon" type="image/png" sizes="192x192" href="%s">' . "\n", esc_url( $icons . 'icon-192.png' ) );
+	printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( $icons . 'apple-touch-icon.png' ) );
+}, 2 );
+
+// The public sitemap and author pages would list the admin login names - keep both out.
+add_filter( 'wp_sitemaps_add_provider', function ( $provider, $name ) {
+	return 'users' === $name ? false : $provider;
+}, 10, 2 );
+add_action( 'template_redirect', function () {
+	if ( is_author() ) {
+		wp_safe_redirect( home_url( '/' ), 301 );
+		exit;
+	}
+} );
+
 /**
  * The building site must not show up in Google - otherwise dev.ekmp.pl would compete with
  * elmc.eu for the same text once the real address goes live. Applies only to this host.
