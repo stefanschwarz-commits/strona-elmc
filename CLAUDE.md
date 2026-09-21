@@ -183,6 +183,10 @@ wymyślonych nazwisk, zdjęć, dat ani logo — czego nie ma, to zostaje pustą 
 **Produkcja (elmc.eu) nie jest wdrażana automatycznie.** Po sprawdzeniu zmiany na
 `dev.ekmp.pl` przenosi ją na produkcję skrypt na serwerze:
 `~/bin/elmc-motyw-na-produkcje.sh` (kopiuje motyw z dev do `ekmp.pl/2027`).
+Co poniedziałek 7:30 serwer sam sprawdza elmc.eu i archiwa (`~/bin/sprawdz-elmc.php`,
+mail do Stefana tylko przy problemie). Kopie obu skryptów: `serwer/`.
+**Cloudflare zapamiętuje pliki statyczne** (obrazy, robots.txt) — nowy plik z tym samym adresem
+może nie dotrzeć do odwiedzających; zmieniaj nazwę albo dodawaj `?v=` (tak jak przy muralu).
 
 `git push` do `main` ze zmianą w `theme/**` uruchamia GitHub Actions
 (`.github/workflows/deploy.yml`), które wgrywa motyw przez FTP na `dev.ekmp.pl`
