@@ -3,7 +3,7 @@ Theme Name: ELMC 2027
 Theme URI: https://elmc.eu
 Author: European Labour Mobility Institute
 Description: Motyw Europejskiego Kongresu Mobilności Pracy 2027 (dev.ekmp.pl). Dwujęzyczny PL/EN.
-Version: 0.8.0
+Version: 0.8.1
 Requires at least: 6.4
 Requires PHP: 8.0
 Text Domain: elmc2027
@@ -581,7 +581,10 @@ input::placeholder { color: var(--grey-500); }
   .speaker-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-footer { padding: 40px var(--gutter); }
-  .editions { padding: 24px var(--gutter); }
+  /* Etykieta nad kafelkami, kafelki w rownej siatce na cala szerokosc. */
+  .editions { padding: 28px var(--gutter); flex-direction: column; align-items: stretch; gap: 16px; }
+  .pills { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .pill { justify-content: center; padding: 10px 8px; }
   .card { padding: 24px; }
 }
 
@@ -598,6 +601,8 @@ input::placeholder { color: var(--grey-500); }
   .h2, .theme-slogan { font-size: 28px; }
   .stats { gap: 28px; }
   .stat-n { font-size: 34px; }
+  .pills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pill { font-size: 14px; padding: 12px 8px; }
   .facts { grid-template-columns: minmax(0, 1fr); }
   .fact { border-right: 0; border-top: 1px solid var(--grey-200); }
   .fact:first-child { border-top: 0; }
