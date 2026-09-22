@@ -8,7 +8,7 @@ Załatwione przekreślamy z datą.
 | # | Sprawa | Co widzi odwiedzający | Twój czas |
 |---|---|---|---|
 | ~~0~~ | ~~Liczba 17 krajów~~ | ~~potwierdzone 20.09.2026, poprawione brzmienie~~ | ~~10 s~~ |
-| 1 | Edycja 2022 — czym była | lista poprzednich edycji ma dziś pozycję bez numeru | 30 s |
+| ~~1~~ | ~~Edycja 2022~~ | ~~kafelek usunięty 22.09 — to była ta sama VII edycja przeniesiona na 2023; na liście 9 edycji~~ | ~~30 s~~ |
 | 2 | ~~Daty i miejsce 2027~~ | czeka na Ligię: data ma być potwierdzona 21.09, miejsce w negocjacjach (Auditorium Maximum). Na stronie „do ogłoszenia” | — |
 | ~~3~~ | ~~Hasło edycji 2027~~ | ~~zostaje bez zmian (20.09)~~ | ~~15 s~~ |
 | ~~4~~ | ~~Partner Strategiczny~~ | ~~zmienione 20.09~~ | ~~15 s~~ |
