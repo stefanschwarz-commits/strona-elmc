@@ -8,7 +8,7 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   gotowe SVG (wersja czarna i biała) wklej w rozmowie, podmienię je w nagłówku i stopce.
 
 - **Test formularza Call for Speakers** — wyślij jedno zgłoszenie ze strony
-  (dev.ekmp.pl → sekcja Call for Speakers) i sprawdź, czy mail dotarł na kontakt@ekmp.pl.
+  (dev.ekmp.pl → sekcja Call for Speakers) i sprawdź, czy mail dotarł na kontakt@elmc.eu.
   Nie zrobiłem tego sam, bo to wysyłka wiadomości w Twoim imieniu. Przy okazji zobaczysz
   zgłoszenie w panelu WordPressa (menu „ELMC 2027" → Call for Speakers) — to sprawdzi
   wszystko naraz: zapis w bazie, mail i panel.
@@ -57,13 +57,8 @@ Jedna lista: co czeka, na kogo i dlaczego. Załatwione przekreślamy z datą.
   przepinaniu domeny, czy te trzy reguły zostają.
 - **Decyzja Stefana 19.09.2026: elmc.eu jest domeną główną**, ekmp.pl przekierowuje na
   polską wersję elmc.eu (obie domeny działają, archiwa pod starymi adresami zostają).
-- **Strona tymczasowa na elmc.eu** — gotowa na placu budowy: http://dev.ekmp.pl/zapowiedz/
-  i http://dev.ekmp.pl/en/zapowiedz/ (19.09.2026). Czeka na akceptację wyglądu przez Stefana.
-  Potem: przepięcie elmc.eu (osobna instalacja WP albo przeniesienie tej, reguły w
-  `public_html/ekmp.pl/.htaccess` od Dawida, Cloudflare). Na docelowym serwerze wystarczy
-  `define( 'ELMC2027_TEASER_FRONT', true );`, żeby zapowiedź była stroną główną.
-- **Przekierowania elmc.eu i ekmp.pl wskazują edycję 2025** (labourinstitute.eu/…2025),
-  choć jest już strona 2026 — nieaktualne niezależnie od ELMC 2027.
+- ~~**Strona tymczasowa na elmc.eu**~~ — zaakceptowana i opublikowana 20.09.2026.
+- ~~**Przekierowania elmc.eu i ekmp.pl wskazują edycję 2025**~~ — nieaktualne od 20.09.2026.
 
 ## Archiwa kongresów — incydent 19.09.2026
 
