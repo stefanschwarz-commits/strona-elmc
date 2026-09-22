@@ -296,26 +296,25 @@ function elmc2027_t( $key, $lang = null ) {
 
 /**
  * Past editions, newest first. Every address was checked on 13.09.2026 and again
- * with the design handoff on 19.09.2026; 2022 is the one edition without a roman numeral.
+ * with the design handoff on 19.09.2026; 2022 was removed on 22.09.2026: it was the 7th edition, moved from February 2022 to April 2023 (the ekmp.pl/2022/ archive stays online).
  */
 function elmc2027_editions( $lang = null ) {
 	$lang = ( 'en' === $lang || 'pl' === $lang ) ? $lang : elmc2027_lang();
 
 	$labels_pl = array(
-		'IX edycja · Warszawa, Crowne Plaza The HUB', 'VIII edycja · Kraków', 'VII edycja · Kraków', 'Kraków',
+		'IX edycja · Warszawa, Crowne Plaza The HUB', 'VIII edycja · Kraków', 'VII edycja · Kraków',
 		'VI edycja · Kraków', 'V edycja · Kraków', 'IV edycja · Kraków', 'III edycja · Kraków', 'II edycja · Kraków', 'I edycja · Kraków',
 	);
 	$labels_en = array(
-		'9th edition · Warsaw, Crowne Plaza The HUB', '8th edition · Kraków', '7th edition · Kraków', 'Kraków',
+		'9th edition · Warsaw, Crowne Plaza The HUB', '8th edition · Kraków', '7th edition · Kraków',
 		'6th edition · Kraków', '5th edition · Kraków', '4th edition · Kraków', '3rd edition · Kraków', '2nd edition · Kraków', '1st edition · Kraków',
 	);
-	$years  = array( '2026', '2025', '2023', '2022', '2019', '2017', '2016', '2015', '2014', '2013' );
-	$romans = array( 'IX', 'VIII', 'VII', '–', 'VI', 'V', 'IV', 'III', 'II', 'I' );
+	$years  = array( '2026', '2025', '2023', '2019', '2017', '2016', '2015', '2014', '2013' );
+	$romans = array( 'IX', 'VIII', 'VII', 'VI', 'V', 'IV', 'III', 'II', 'I' );
 	$hrefs_pl = array(
 		'https://labourinstitute.eu/ekmp2026/',
 		'https://labourinstitute.eu/ekmp2025/',
 		'https://ekmp.pl/2023/',
-		'https://ekmp.pl/2022/',
 		'https://ekmp.pl/2019/',
 		'https://ekmp.pl/2017/',
 		'https://ekmp.pl/2016/',
@@ -323,13 +322,12 @@ function elmc2027_editions( $lang = null ) {
 		'https://ekmp.pl/2014/',
 		'https://ekmp.pl/2013/',
 	);
-	// English archives exist under elmc.eu for 2014, 2015, 2016 and 2022 only (checked 19.09.2026);
+	// English archives exist under elmc.eu for 2014, 2015 and 2016 only (checked 19.09.2026);
 	// 2013, 2017, 2019 and 2023 have Polish versions only.
 	$hrefs_en = array(
 		'https://labourinstitute.eu/en/elmc2026/',
 		'https://labourinstitute.eu/en/elmc2025/',
 		'https://ekmp.pl/2023/',
-		'https://www.elmc.eu/2022/',
 		'https://ekmp.pl/2019/',
 		'https://ekmp.pl/2017/',
 		'https://www.elmc.eu/2016/',
