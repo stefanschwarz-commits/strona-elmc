@@ -74,3 +74,15 @@ decyzja — kazał zamknąć tylko strony-śmietnik. Tamten wątek sam przywróc
 z właściwymi tytułami. `arch.inicjatywa.eu` i `old.inicjatywa.eu` (stare strony
 Inicjatywy Mobilności Pracy — dawna nazwa stowarzyszenia) **zostają zamknięte — decyzja
 Stefana 19.09.2026**; pliki i bazy zostają na serwerze.
+
+## Wyszukiwarki (22.09.2026)
+
+- **Google Search Console dla elmc.eu** — własność potwierdzona (usługa typu „Domena”, konto Google Stefana),
+  mapa strony https://elmc.eu/wp-sitemap.xml przesłana, stan „Sukces”. Dane o ruchu pojawią się po kilku dniach.
+- **Cloudflare wyczyszczony dla elmc.eu** — robots.txt był zapamiętany od ok. 8 dni jako przekierowanie
+  na stronę 2025 i blokował pobranie mapy. **Dla ekmp.pl jeszcze nie** (Stefan: Edge → dash.cloudflare.com →
+  ekmp.pl → Caching → Configuration → Purge Everything) — do tego czasu www.ekmp.pl/robots.txt pokazuje starą wersję.
+- **ekmp.pl ma własny robots.txt** (`public_html/ekmp.pl/robots-ekmp.txt`, reguła w `.htaccess`): pozwala Google
+  czytać archiwa. Kopia .htaccess sprzed zmiany: `~/kwarantanna-20260913/elmc-przepiecie-20260920/ekmp.pl-htaccess-przed-robots-20260922`.
+- **Prośba o indeksowanie strony głównej** w Search Console — nie wykonana (przeglądarka w aplikacji nie rysowała
+  strony); niekonieczna, Google odwiedzi stronę z mapy.
