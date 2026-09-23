@@ -16,6 +16,7 @@ const ELMC2027_DB_VERSION = '4';
 require_once get_template_directory() . '/inc/i18n.php';
 require_once get_template_directory() . '/inc/copy.php';
 require_once get_template_directory() . '/inc/cfs.php';
+require_once get_template_directory() . '/inc/mail.php';
 if ( is_admin() ) {
 	require_once get_template_directory() . '/inc/admin.php';
 }
