@@ -15,7 +15,7 @@ Załatwione przekreślamy z datą.
 | ~~5~~ | ~~Pole na temat w zgłoszeniu prelegenta~~ | ~~dodane 20.09~~ | ~~10 s~~ |
 | ~~6~~ | ~~„Odpowiadamy w ciągu 2 dni roboczych”~~ | ~~zostaje (20.09)~~ | ~~10 s~~ |
 | ~~7~~ | ~~Adres kontaktowy~~ | ~~kontakt@elmc.eu wdrożone 20.09, do sprawdzenia próbnym zgłoszeniem~~ | ~~30 s~~ |
-| 8 | Próbny zapis na powiadomienia z własnego adresu | sprawdza, czy mail potwierdzający dociera i czy nie ląduje w spamie | 2 min |
+| ~~8~~ | ~~Próbny zapis na powiadomienia~~ | ~~wykonany 23.09: mail nie dochodził, wysyłka przełączona na Microsoft, po zmianie mail w 2 sekundy~~ | ~~2 min~~ |
 | ~~9~~ | ~~Logo ELMC w wersji wektorowej~~ | ~~zrobione i wdrożone 20.09~~ | ~~30 s~~ |
 | 10 | Materiały od Ligii | Ligia proponuje zebrać zdjęcia, treści i linki w jednym folderze — odpowiadasz jej sam | 1 min |
 

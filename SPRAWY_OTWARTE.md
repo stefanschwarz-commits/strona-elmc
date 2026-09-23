@@ -79,3 +79,19 @@ Stefana 19.09.2026**; pliki i bazy zostają na serwerze.
   czytać archiwa. Kopia .htaccess sprzed zmiany: `~/kwarantanna-20260913/elmc-przepiecie-20260920/ekmp.pl-htaccess-przed-robots-20260922`.
 - **Prośba o indeksowanie strony głównej** w Search Console — nie wykonana (przeglądarka w aplikacji nie rysowała
   strony); niekonieczna, Google odwiedzi stronę z mapy.
+
+## Poczta ze strony (23.09.2026)
+
+- **Maile ze strony idą przez Microsoft 365, nie z serwera hostingu.** Test 23.09 pokazał, że
+  wiadomość wysłana przez WordPressa z serwera CyberFolks nie dociera: domena elmc.eu ma SPF
+  dopuszczający tylko Microsoft. Kod: , dane aplikacji w 
+  (). Nadawca tymczasowy: **claude@labourinstitute.eu**, podpis „European Labour
+  Mobility Congress”.
+- **Do zrobienia, gdy powstanie skrzynka kontakt@elmc.eu** (Stefan: 24.09): zmienić
+   w wp-config na kontakt@elmc.eu i powtórzyć próbny zapis. Dziś ten adres
+  nie istnieje w Microsoft 365 jako skrzynka (sprawdzone), więc zgłoszenia prelegentów i pytania
+  o partnerstwo mogą nie dochodzić.
+- **Test na produkcji 23.09**: zapis → mail w 2 sekundy → potwierdzenie → wypis, wszystko działa;
+  wiersz testowy usunięty z bazy. **Uwaga:** rejestr zgód działa tu w trybie „produkcja”, więc
+  zdarzenia testowe (zapis i wycofanie zgody dla claude@labourinstitute.eu) mogły trafić do rejestru
+  — do usunięcia przez osobę prowadzącą bazę.
