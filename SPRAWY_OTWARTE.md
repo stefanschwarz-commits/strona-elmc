@@ -84,11 +84,11 @@ Stefana 19.09.2026**; pliki i bazy zostają na serwerze.
 
 - **Maile ze strony idą przez Microsoft 365, nie z serwera hostingu.** Test 23.09 pokazał, że
   wiadomość wysłana przez WordPressa z serwera CyberFolks nie dociera: domena elmc.eu ma SPF
-  dopuszczający tylko Microsoft. Kod: , dane aplikacji w 
-  (). Nadawca tymczasowy: **claude@labourinstitute.eu**, podpis „European Labour
+  dopuszczający tylko Microsoft. Kod: `theme/inc/mail.php`, dane aplikacji w `wp-config.php`
+  (`ELMC2027_GRAPH_*`). Nadawca tymczasowy: **claude@labourinstitute.eu**, podpis „European Labour
   Mobility Congress”.
 - **Do zrobienia, gdy powstanie skrzynka kontakt@elmc.eu** (Stefan: 24.09): zmienić
-   w wp-config na kontakt@elmc.eu i powtórzyć próbny zapis. Dziś ten adres
+  `ELMC2027_GRAPH_SENDER` w wp-config na kontakt@elmc.eu i powtórzyć próbny zapis. Dziś ten adres
   nie istnieje w Microsoft 365 jako skrzynka (sprawdzone), więc zgłoszenia prelegentów i pytania
   o partnerstwo mogą nie dochodzić.
 - **Test na produkcji 23.09**: zapis → mail w 2 sekundy → potwierdzenie → wypis, wszystko działa;
